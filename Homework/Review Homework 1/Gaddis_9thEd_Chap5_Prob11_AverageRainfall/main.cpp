@@ -25,15 +25,43 @@ int main(int argc, char** argv) {
     //Set the random number seed here
     
     //Declare all variables for this function
-    unsigned short int startPop;
-    short days;
-    short popIncr;
+    float startPop;
+    int days;
+    float popIncr;
+    float popIncrDec;
+    float updaPop;
     
     //Initialize all known variables
     
     //Process Inputs to Outputs -> Mapping Process
     //Maps known values to the unknown objectives
     
+    do {
+        cout << "Enter the starting number of organisms: ";
+        cin >> startPop;
+    }
+    while (validateStartPop(startPop) == false);
+    
+    do {
+        cout << "Enter the average daily population increase(percentage): ";
+        cin >> popIncr;
+    }
+    while (validatePopIncr(popIncr) == false);
+    
+    do {
+        cout << "Enter the number of days they will multiply: ";
+        cin >> days;
+    }
+    while (validateDays(days) == false);
+    
+    popIncrDec = (popIncr/100);
+    cout << popIncrDec;
+    updaPop = startPop;
+ 
+    for (int i = 0;i < days; i++){
+        updaPop += (updaPop * popIncrDec);
+        cout << "Day " << (i+1) << ": " << updaPop << endl;      
+    }
     
     //Display the Inputs/Outputs
     
