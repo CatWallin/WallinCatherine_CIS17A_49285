@@ -1,0 +1,16 @@
+East 1 50
+East 2 98
+East 3 42
+East 4 79
+West 1 56
+West 2 34
+West 3 25
+West 4 97
+North 1 63
+North 2 32
+North 3 76
+North 4 99
+South 1 43
+South 2 67
+South 3 53
+South 4 74
