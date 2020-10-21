@@ -41,8 +41,7 @@ int main() {
         cin >> employee[i].payRate;
         
         employee[i].grossPay = calculateGrossPay(employee[i]);
-        cout << employee[i].grossPay << endl;
-        
+                
         printPayCheck(employee[i]);
         
     }

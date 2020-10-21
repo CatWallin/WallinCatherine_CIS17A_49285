@@ -30,29 +30,29 @@ struct CustomerData
 
 int main(int argc, char** argv) {
    
-    CustomerData customer[10];
+    CustomerData customer;
     double newBalance = 0;
     
     cout << "Enter the customer name: ";
-    cin >> customer[0].name;
+    cin >> customer.name;
     cout << "Enter the Address: ";
     cin.ignore();
-    getline(cin, customer[0].address);
+    getline(cin, customer.address);
     cout << "Enter the account number (five digits only): ";
-    cin >> customer[0].accountNum;
-    while (customer[0].accountNum > 99999 || customer[0].accountNum < 10000){
+    cin >> customer.accountNum;
+    while (customer.accountNum > 99999 || customer.accountNum < 10000){
         cout << "Invalid account number." << endl << "Please enter again: ";
-        cin >> customer[0].accountNum;
+        cin >> customer.accountNum;
     }
     cout << "Enter the balance at the start of the month: ";
-    cin >> customer[0].balance;
+    cin >> customer.balance;
     cout << "Enter amount of all checks written by the customer this month:" << endl;
     double check;
     char input;
     do {
         cout << "Enter the amount of the check: ";
         cin >> check;
-        customer[0].totalChecks += check; 
+        customer.totalChecks += check; 
         cout << "Would you like to enter another check(Y/N): ";
         cin >> input;
         input = tolower(input);
@@ -62,20 +62,20 @@ int main(int argc, char** argv) {
     do {
         cout << "Enter the amount of the deposit: ";
         cin >> deposit;
-        customer[0].totalDeposits += deposit; 
+        customer.totalDeposits += deposit; 
         cout << "Would you like to enter another deposit{Y/N): ";
         cin >> input;
         input = tolower(input);
     } while(input == 'y');
    
-    cout << "Customer Name: " << customer[0].name << endl;
-    cout << "Customer Address: " << customer[0].address << endl;
-    cout << "Customer Account Number: " << customer[0].accountNum << endl;
-    cout << "Account Balance(start of month): $" << customer[0].balance << endl;
-    cout << "Total Written Checks Amount: $" << customer[0].totalChecks << endl;
-    cout << "Total Deposited Money: $" << customer[0].totalDeposits << endl << endl;
+    cout << "Customer Name: " << customer.name << endl;
+    cout << "Customer Address: " << customer.address << endl;
+    cout << "Customer Account Number: " << customer.accountNum << endl;
+    cout << "Account Balance(start of month): $" << customer.balance << endl;
+    cout << "Total Written Checks Amount: $" << customer.totalChecks << endl;
+    cout << "Total Deposited Money: $" << customer.totalDeposits << endl << endl;
     
-    newBalance = (customer[0].balance - customer[0].totalChecks) + customer[0].totalDeposits;
+    newBalance = (customer.balance - customer.totalChecks) + customer.totalDeposits;
     cout << "Your new balance is: $" << newBalance;
     if (newBalance < 0){
         cout << "\nYour account has been overdrawn." << endl;
