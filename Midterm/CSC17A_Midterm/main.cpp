@@ -8,6 +8,7 @@
 
 //System Libraries
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -84,11 +85,34 @@ void prblm4(){
 }
 
 void prblm5(){
-    cout<<"problem 5"<<endl;
+    cout<<"\nproblem 5"<<endl;
+    cout << setw(25) << left << "Data Type" << setw(25) << left << "The Largest Factorial";
+    cout << setw(25) << left << "The Result" << endl;  
+    cout << setw(25) << left << "int" << setw(25) << left << "12" << setw(25) << left << "479001600" << endl; 
+    cout << setw(25) << left << "unsigned int" << setw(25) << left << "12" << setw(25) << left << "479001600" << endl;
+    cout << setw(25) << left << "signed int" << setw(25) << left << "12" << setw(25) << left << "479001600" << endl;
+    cout << setw(25) << left << "short int" << setw(25) << left << "7" << setw(25) << left << "5040" << endl;
+    cout << setw(25) << left << "unsigned short int" << setw(25) << left << "8" << setw(25) << left << "40320" << endl;
+    cout << setw(25) << left << "signed short int" << setw(25) << left << "7" << setw(25) << left << "5040" << endl;
+    cout << setw(25) << left << "long int" << setw(25) << left << "12" << setw(25) << left << "479001600" << endl;
+    cout << setw(25) << left << "signed long int" << setw(25) << left << "12" << setw(25) << left << "479001600" << endl;
+    cout << setw(25) << left << "unsigned long int" << setw(25) << left << "12" << setw(25) << left << "479001600" << endl;
+
+    cout << setw(25) << left << "unsigned long long int" << setw(25) << left << "20" << setw(25) << left << "2432902008176640000" << endl;
+    cout << setw(25) << left << "float" << setw(25) << left << "20" << setw(25) << left << "2432902008176640000" << endl;
+    cout << setw(25) << left << "double" << setw(25) << left << "20" << setw(25) << left << "2432902008176640000" << endl;
+  
+    cout << setw(25) << left << "char" << setw(25) << left << "5" << setw(25) << left << "120" << endl;
+    cout << setw(25) << left << "unsigned char" << setw(25) << left << "5" << setw(25) << left << "120" << endl;
+    cout << setw(25) << left << "signed char" << setw(25) << left << "5" << setw(25) << left << "120" << endl;
 }
 
 void prblm6(){
-    cout<<"problem 6"<<endl;
+    cout<<"\nProblem 6"<<endl;
+    cout << "---------------------------------------------------------------------------------" << endl;
+    cout << setw(20) << left << "Decimal" << setw(20) << left << "Binary" << setw(20) << left << "Octal" << setw(20) << left << "Hexadecimal" << endl;
+    cout << setw(20) << left << "2.875" << setw(20) << left << "10.111" << setw(20) << left << "2.7" << setw(20) << left << "2.E" << endl;
+    cout << setw(20) << left << ".1796875" << setw(20) << left << ".0010111" << setw(20) << left << ".134" << setw(20) << left << ".2E" << endl;
 }
 
 void prblm7(){

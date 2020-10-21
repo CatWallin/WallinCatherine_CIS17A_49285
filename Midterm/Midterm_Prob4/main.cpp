@@ -32,7 +32,8 @@ int main(int argc, char** argv) {
     strcpy(array, input.c_str());
     
     for (int i = 0; i < 4; i++){
-        int currentNum = ((int)array[i]);
+        int currentNum = (int)array[i];
+        cout << "this is the current num: " << currentNum << endl;
         if (currentNum < 0 || currentNum > 7){
             cout << "This number is invalid: " << array[i] << endl;
         }
@@ -55,7 +56,7 @@ int main(int argc, char** argv) {
             intArray[1] = currentNum;
         }
     }
-    
+        
     cout << "The encrypted number is: ";
     for (int i = 0; i < 4; i++){
         cout << intArray[i];

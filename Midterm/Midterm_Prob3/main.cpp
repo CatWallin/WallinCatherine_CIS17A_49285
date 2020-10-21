@@ -153,7 +153,6 @@ Stats *stat(const Array *array){
     cout<<endl<<"Stat function to be completed by the student"<<endl;
     Stats *stats=new Stats;
     stats->mode=new Array;
-    
     stats->mode->size=0;
     int nModes=0;
     if(nModes!=0)stats->mode->data=new int[nModes];
@@ -192,11 +191,26 @@ Stats *stat(const Array *array){
             currentValue = array->data[i];
         }
     }
+    
     stats->mode->size=modeTotal;
     stats->modFreq=maxFrequency;
     
-    
-    
+    currentValue = array->data[0];
+    frequency = 1;
+    int modeArrayIndex = 0;
+    for (int i = 1; i < array->size; i++){
+        if (array->data[i] == currentValue){
+            frequency++;
+        }
+        else {
+            if (frequency == maxFrequency){
+                stats->mode->data[modeArrayIndex] = currentValue;
+                modeArrayIndex++;
+            }
+            frequency = 1;
+            currentValue = array->data[i];
+        }
+    }
     
     if (array->size % 2 == 0){
         stats->median = (float)(array->data[(array->size - 1)/2] + array->data[array->size/2])/2;
@@ -204,6 +218,16 @@ Stats *stat(const Array *array){
     else {
         stats->median = (float)array->data[array->size/2];
     }
+    
+    int sum = 0;
+    int average = 0;
+    for (int i = 0; i < array->size; i++){
+        sum += array->data[i];
+    }
+    average = sum / array->size;
+    
+    stats->avg = average;
+    cout << average;
     
     return stats;
 }
