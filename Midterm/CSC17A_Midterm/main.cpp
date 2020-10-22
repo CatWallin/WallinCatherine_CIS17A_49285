@@ -19,6 +19,7 @@ using namespace std;
 #include "Stats.h"
 #include "Problem3.h"
 #include "Problem7.h"
+#include "Problem2.h"
 
 //Global Constants - Math/Physics Constants, Conversions,
 //                   2-D Array Dimensions
@@ -141,13 +142,33 @@ void prblm1(){
     delete customer1;
 }
 
-
-
 void prblm2(){
     cout<<"Problem 2"<<endl;
     cout << "---------------------------------------------------------------------------------" << endl;
+    int numEmployees;
+    cout << "Enter the number of employees: ";
+    cin >> numEmployees;
+    EmployeeData* employee = new EmployeeData[numEmployees];
+    
+    for(int i = 0; i < numEmployees; i++){
+        cout << "Input the employee name: ";
+        cin >> employee[i].name;
+        cout << "Input the hours worked by this employee: ";
+        cin >> employee[i].hours;
+        cout << "Input the pay rate for this employee: ";
+        cin >> employee[i].payRate;
+        if (employee[i].hours < 0 || employee[i].payRate < 0){
+            cout << "Invalid Input. Terminating Program.";
+            cout << "\n---------------------------------------------------------------------------------" << endl;
+            return;
+        }
+        
+        employee[i].grossPay = calculateGrossPay(employee[i]);
+                
+        printPayCheck(employee[i]);
+    }
+    cout << "\n---------------------------------------------------------------------------------" << endl;
 }
-
 
 void prblm3(){
     cout<<"Problem 3"<<endl;

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Problem2.o \
 	${OBJECTDIR}/Problem3.o \
 	${OBJECTDIR}/Problem7.o \
 	${OBJECTDIR}/main.o
@@ -63,6 +64,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csc17a_midterm.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csc17a_midterm ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Problem2.o: Problem2.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Problem2.o Problem2.cpp
 
 ${OBJECTDIR}/Problem3.o: Problem3.cpp
 	${MKDIR} -p ${OBJECTDIR}

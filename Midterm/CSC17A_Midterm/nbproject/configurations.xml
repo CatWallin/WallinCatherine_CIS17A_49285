@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Array.h</itemPath>
+      <itemPath>Problem2.h</itemPath>
       <itemPath>Problem3.h</itemPath>
       <itemPath>Problem7.h</itemPath>
       <itemPath>Stats.h</itemPath>
@@ -16,6 +17,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Problem2.cpp</itemPath>
       <itemPath>Problem3.cpp</itemPath>
       <itemPath>Problem7.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -43,6 +45,10 @@
       <compileType>
       </compileType>
       <item path="Array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Problem2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Problem2.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Problem3.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -78,6 +84,10 @@
         </asmTool>
       </compileType>
       <item path="Array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Problem2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Problem2.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Problem3.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -1,55 +1,16 @@
-/* 
- * File:   main.cpp
- * Author: Catherine Wallin
- * Created on October 18, 2020, 9:03 PM
- * Midterm Problem 2
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <ctype.h>
 #include <iomanip>
+#include "Problem2.h"
 
 using namespace std;
-
-struct EmployeeData
-{
-    string name;
-    int hours;
-    float payRate;
-    double grossPay;
-};
-
-double calculateGrossPay(struct EmployeeData);
-void printPayCheck(struct EmployeeData);
-void translateNumber(double);
-
-int main() {
-    
-    int numEmployees;
-    cout << "Enter the number of employees: ";
-    cin >> numEmployees;
-    EmployeeData* employee = new EmployeeData[numEmployees];
-    
-    for(int i = 0; i < numEmployees; i++){
-        cout << "Input the employee name: ";
-        cin >> employee[i].name;
-        cout << "Input the hours worked by this employee: ";
-        cin >> employee[i].hours;
-        cout << "Input the pay rate for this employee: ";
-        cin >> employee[i].payRate;
-        if (employee[i].hours < 0 || employee[i].payRate < 0){
-            cout << "Invalid Input. Terminating Program.";
-            return 0;
-        }
-        
-        employee[i].grossPay = calculateGrossPay(employee[i]);
-                
-        printPayCheck(employee[i]);
-    }
-    return 0;
-}
 
 double calculateGrossPay(EmployeeData array){
     double grossPay;
