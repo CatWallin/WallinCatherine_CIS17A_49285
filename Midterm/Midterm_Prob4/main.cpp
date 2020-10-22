@@ -32,10 +32,11 @@ int main(int argc, char** argv) {
     strcpy(array, input.c_str());
     
     for (int i = 0; i < 4; i++){
-        int currentNum = (int)array[i];
-        cout << "this is the current num: " << currentNum << endl;
+        int currentNum = ((int)array[i] - 48);
         if (currentNum < 0 || currentNum > 7){
-            cout << "This number is invalid: " << array[i] << endl;
+            cout << "This number is invalid: " << currentNum << endl;
+            cout << "Invalid Input. Now terminating program.";
+            return 0;
         }
     }
     

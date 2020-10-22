@@ -1,7 +1,7 @@
-/* 
- * File:   main.cpp
- * Author: Dr. Mark E. Lehr
- * Purpose:  Driver program to test out the statistics problem.
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
 //Libraries
@@ -13,61 +13,7 @@ using namespace std;
 //User Libraries
 #include "Array.h"
 #include "Stats.h"
-
-//No Global Constants
-
-//Function Prototypes I supply
-Array *fillAry(int,int);        //Fill an array and put into a structure
-void prntAry(const Array *,int);//Print the array 
-int *copy(const int *,int);     //Copy the array
-void mrkSort(int *,int);        //Sort an array
-void prtStat(const Stats *);    //Print the structure
-void rcvrMem(Array *);          //Recover memory from the Array Structure
-void rcvrMem(Stats *);          //Recover memory from Statistics Structure
-
-//Functions you are to supply
-Stats *stat(const Array *);     //Find & store mean, median, & modes in structure
-
-//Execution begins here
-int main(int argc, char*argv[]) {
-    //Declare variables
-    int arySize;//Array Size
-    int modNum; //Number to control the modes (digits 0 to 9 allowed)
-    Array *array;
-    
-    //Input the size and mod number
-    cout<<"This program develops an array to be analyzed"<<endl;
-    cout<<"Array size from mod number to 100"<<endl;
-    cout<<"Mod number from 2 to 10"<<endl;
-    cout<<"Input the Array Size and the mod number to be used."<<endl;
-    cin>>arySize>>modNum;
-    cout<<endl<<endl;
-    
-    //Fill the array
-    array=fillAry(arySize,modNum);
-    
-    //Print the initial array
-    cout<<"Original Array before sorting"<<endl;
-    prntAry(array,10);
-    
-    //Sort the array
-    mrkSort(array->data,array->size);
-    cout<<"Sorted Array to be utilize for the stat function"<<endl;
-    prntAry(array,10);
-    
-    //Calculate some of the statistics
-    Stats *stats=stat(array);
-    
-    //Print the statistics
-    prtStat(stats);
-    
-    //Recover allocated memory
-    rcvrMem(array);
-    rcvrMem(stats);
-    
-    //Exit stage right
-    return 0;
-}
+#include "Problem3.h"
 
 int *copy(const int *a,int n){
     //Declare and allocate an array

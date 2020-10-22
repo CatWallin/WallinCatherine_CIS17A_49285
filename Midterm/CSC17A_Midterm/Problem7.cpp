@@ -4,48 +4,12 @@
  * and open the template in the editor.
  */
 
-/* 
- * File:   main.cpp
- * Author: Catherine
- * Created on October 20, 2020, 9:46 AM
- * Midterm Problem 7
- */
-
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include "Problem7.h"
 
 using namespace std;
-
-struct Prime 
-{
-    unsigned short prime;
-    unsigned char power;
-};
-struct Primes
-{
-    unsigned char nPrimes;
-    Prime *prime;
-};
-
-Primes *factor(int);    //Input an integer, return all prime factors
-void prntPrm(Primes *);  //Output all prime factors
-
-int main(int argc, char** argv) {
-    int input;
-    cout << "Enter a number to factor into its prime numbers: ";
-    cin >> input;    
-    while (input < 2 || input > 10000){
-        cout << "Invalid Input. Try Again: ";
-        cin >> input;
-    }
-    Primes array = *factor(input);
-    
-    cout << input << " = ";
-    prntPrm(&array);
-    
-    return 0;
-}
 
 Primes *factor(int num){
     Primes *primeNumberResult = new Primes;
