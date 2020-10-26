@@ -1,0 +1,24 @@
+The Game of Life: Game Stats
+Winner: Player 1
+
+
+Player 1
+Career: Athlete
+Ending Salary: $70000.00
+Married: Yes
+Children: 0
+Degree: Yes
+Total LIFE tiles: 0
+Total Debt: $0.00
+Total Money: $415000.00
+
+
+Player 2
+Career: Entertainer
+Ending Salary: $70000.00
+Married: Yes
+Children: 0
+Degree: Yes
+Total LIFE tiles: 1
+Total Debt: $0.00
+Total Money: $405000.00
