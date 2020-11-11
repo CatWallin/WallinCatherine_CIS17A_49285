@@ -1,16 +1,20 @@
-/* 
- * File:   main.cpp
- * Author: Catherine Wallin
- * Created on November 7, 2020, 7:23 PM
- * Chapter 14 Problem 4: NumDays Class
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <iomanip>
+/* 
+ * File:   NumDays.h
+ * Author: Catherine
+ *
+ * Created on November 11, 2020, 1:07 PM
+ */
 
-using namespace std;
+#ifndef NUMDAYS_H
+#define NUMDAYS_H
+
+#include <string>
 
 class NumDays
 {
@@ -27,6 +31,9 @@ public:
     }
     float getDays(){
         return days;
+    }
+    void setWorkHours(float hours){
+        workHours = hours;
     }
     float operator+(NumDays x){
         return workHours + x.workHours;
@@ -54,13 +61,5 @@ public:
     }
 };
 
-int main(int argc, char** argv) {
-
-    NumDays day = NumDays(12);
-    
-    cout << "Work Hours: " << day.getWorkHours() << endl;
-    cout << "Days: " << setprecision(2) << fixed << day.getDays() << endl;
-    
-    return 0;
-}
+#endif /* NUMDAYS_H */
 

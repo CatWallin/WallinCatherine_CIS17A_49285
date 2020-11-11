@@ -25,13 +25,27 @@ public:
         this->dayOfYear = dayOfYear;
     }
     void print(){
-        
+        int daysInMonthTotal = 0;
+        int counter = 0;
+        while (dayOfYear > daysInMonthTotal){
+            daysInMonthTotal += daysInMonth[counter];
+            counter++;
         }
-    
+        cout << "Day " << dayOfYear << " is " << englishMonth[counter-1];
+        cout << daysInMonth[counter-1] - (daysInMonthTotal-dayOfYear) << endl;
+    }
 };
 
 int main(int argc, char** argv) {
 
+    int dayOfYear;
+    
+    for (int i = 1; i <= 365; i++){
+        DayOfYear day = DayOfYear(i);
+        day.print();
+    }
+    
+    
     return 0;
 }
 
