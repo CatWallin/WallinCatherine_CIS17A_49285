@@ -22,9 +22,13 @@ private:
     float workHours;
     float days;
 public: 
-    NumDays(int workHours){
+    NumDays(float workHours){
         this->workHours = workHours;
         days = workHours/8.00;
+    }
+    void setDays(float days){
+        this->days = days;
+        this->workHours = days * 8.00;
     }
     float getWorkHours(){
         return workHours;
@@ -34,11 +38,16 @@ public:
     }
     void setWorkHours(float hours){
         workHours = hours;
+        days = workHours/8.00;
     }
     float operator+(NumDays x){
-        return workHours + x.workHours;
+        workHours += x.workHours;
+        days = workHours/8.00;
+        return workHours;
     }
     float operator-(NumDays x){
+        workHours -= x.workHours;
+        days = workHours/8.00;
         return workHours - x.workHours;
     }
     void operator++(){

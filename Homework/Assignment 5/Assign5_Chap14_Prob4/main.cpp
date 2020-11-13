@@ -29,9 +29,13 @@ public:
         return days;
     }
     float operator+(NumDays x){
-        return workHours + x.workHours;
+        workHours += x.workHours;
+        days = workHours/8.00;
+        return workHours;
     }
     float operator-(NumDays x){
+        workHours -= x.workHours;
+        days = workHours/8.00;
         return workHours - x.workHours;
     }
     void operator++(){
