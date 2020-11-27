@@ -4,8 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Essay.h</itemPath>
-      <itemPath>GradedActivity.h</itemPath>
+      <itemPath>Date.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -38,9 +37,7 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Essay.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="GradedActivity.h" ex="false" tool="3" flavor2="0">
+      <item path="Date.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -65,9 +62,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Essay.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="GradedActivity.h" ex="false" tool="3" flavor2="0">
+      <item path="Date.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
