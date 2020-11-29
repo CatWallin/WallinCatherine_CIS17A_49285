@@ -341,7 +341,7 @@ void taxesDueSpace(PlayerData *player){
     sleep(1);
     cout << "You have paid $" << player->career.taxes << "in taxes." << endl;
 }
-void taxRefundSpace(PlayerData *player){
+void (PlayerData *player){
     cout << "Your tax refund came in the mail!" << endl;
     player->totalMoney += (player->career.taxes * .25);
     sleep(1);
