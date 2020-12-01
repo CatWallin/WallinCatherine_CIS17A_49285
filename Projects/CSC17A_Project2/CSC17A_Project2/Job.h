@@ -20,6 +20,7 @@ protected:
     float taxes;
     bool degreeRequired;
 public:
+    //default constructor
     Job(){
         position = "0";
         minSalary = 0.0;
@@ -49,6 +50,9 @@ public:
     float getTaxes(){
         return taxes;
     }
+    
+    ~Job(){}
+    
 };
 
 

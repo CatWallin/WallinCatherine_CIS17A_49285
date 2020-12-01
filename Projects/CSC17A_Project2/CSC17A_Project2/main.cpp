@@ -20,6 +20,7 @@ using namespace std;
 
 #include "CollegeJob.h"
 #include "Player.h"
+#include "Spin.h"
 
 void drawCareer(class Player, class Job *);
 
@@ -27,10 +28,11 @@ int main(int argc, char** argv) {
     
     srand(time(NULL));
     int numPlayers;
+    int maxBoardPos = 0;
     
     //regular career objects
     Job career[13];
-    career[0] = Job("PlaceHolder", 0, 0, 0);
+    career[0] = Job(); //operator overloading for Job class
     career[1] = Job("Sales Person", 20000, 50000, 5000);
     career[2] = Job("Hair Stylist", 30000, 60000, 10000);
     career[3] = Job("Mechanic", 30000, 60000, 10000);
@@ -91,6 +93,47 @@ int main(int argc, char** argv) {
         }
         cout << "Your Salary: $" << player[i].getSalary() << endl;
     }
+    
+    
+    //initiate turn sequence 
+    do {
+        for (int i = 0; i < numPlayers; i++){
+            cout << endl << "Player " << i+1 << endl;
+            int spinResult;
+            spinResult = Spin::initiateSpin();
+            if (spinResult == 10){
+                for (int p = 0; p < numPlayers; p++){
+                    if (player[p].getCareer().getPosition() == "Police Officer"){
+                        //function for paying 
+                        //function for subtracting
+                    }
+                }
+            }
+            //function for adding board result to board position 
+        }
+        
+        
+        
+        //spaces
+        
+        
+        
+        
+        //PayDay after each turn
+        
+        for (int i = 0; i < numPlayers; i++){
+            cout << "Player " << i+1 << endl;
+            cout << "You now have $: " << player[i].payDay() << endl;
+        }
+        cout << endl;    
+    } while (maxBoardPos < 35);
+    
+    
+    
+    //cout << Spin::initiateSpin() << endl;
+    
+    
+    
     return 0;
 }
 
@@ -127,6 +170,5 @@ void drawCareer(Player player, Job* career){
     else {
         player.setCareer(career[result2]);
     }
-    
 }
 
