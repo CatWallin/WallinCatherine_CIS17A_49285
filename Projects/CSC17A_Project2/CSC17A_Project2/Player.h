@@ -36,9 +36,10 @@ public:
         lifeTileCount = 0;
     }
     //mutator functions
-    void setCareer(Job title){
-        career = title;
+    void setCareer(Job job){        
+        career = job;
     }
+    
     void setSalary(int randomNum){
         if (randomNum == 1){
             salary = career.getMinSalary();
@@ -137,6 +138,10 @@ public:
             salary = career.getMaxSalary();
             return salary;
         }
+    }
+    
+    void movePlayerPiece(int spinNum){
+        currentBoardPosition += spinNum;
     }
     
     

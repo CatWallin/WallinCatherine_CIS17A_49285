@@ -50,6 +50,9 @@ public:
     float getTaxes(){
         return taxes;
     }
+    bool getDegreeRequired(){
+        return degreeRequired;
+    }
     
     ~Job(){}
     

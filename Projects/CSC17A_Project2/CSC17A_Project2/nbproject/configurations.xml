@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>CollegeJob.h</itemPath>
+      <itemPath>GameStats.h</itemPath>
       <itemPath>Job.h</itemPath>
       <itemPath>Player.h</itemPath>
       <itemPath>Spin.h</itemPath>
@@ -42,6 +43,8 @@
       </compileType>
       <item path="CollegeJob.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="GameStats.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Job.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
@@ -72,6 +75,8 @@
         </asmTool>
       </compileType>
       <item path="CollegeJob.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GameStats.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Job.h" ex="false" tool="3" flavor2="0">
       </item>

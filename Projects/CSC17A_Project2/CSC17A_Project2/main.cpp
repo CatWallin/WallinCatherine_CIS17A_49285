@@ -21,14 +21,23 @@ using namespace std;
 #include "CollegeJob.h"
 #include "Player.h"
 #include "Spin.h"
+#include "GameStats.h"
 
-void drawCareer(class Player, class Job *);
+void drawCareer(Player &player, Job *career);
+
+enum boardTile {GetRaise = 1, LifeTile = 2, TradeSalary = 3, PaySpace = 4, GetMarried = 5, KidSpace = 6, TaxesDue = 7, TaxRefund = 8, GetMoney = 9, NewCareer = 10};
 
 int main(int argc, char** argv) {
     
     srand(time(NULL));
     int numPlayers;
-    int maxBoardPos = 0;
+    
+    boardTile board[35] = { (boardTile)2, (boardTile)9, (boardTile)3, (boardTile)4, (boardTile)5, (boardTile)2, (boardTile)4, (boardTile)1, (boardTile)6, (boardTile)2, 
+                            (boardTile)4, (boardTile)4, (boardTile)3, (boardTile)4, (boardTile)2, (boardTile)1, (boardTile)3, (boardTile)4, (boardTile)2, (boardTile)6, (boardTile)4, 
+                            (boardTile)9, (boardTile)3, (boardTile)7, (boardTile)2, (boardTile)10, (boardTile)8, (boardTile)4, (boardTile)1, (boardTile)2, (boardTile)3, (boardTile)4, 
+                            (boardTile)4, (boardTile)4, (boardTile)2 };
+    
+    GameStats gameStats = GameStats();
     
     //regular career objects
     Job career[13];
@@ -39,6 +48,7 @@ int main(int argc, char** argv) {
     career[4] = Job("Police Officer", 40000, 70000, 15000);
     career[5] = Job("Entertainer", 50000, 1000000, 20000);
     career[6] = Job("Athlete", 60000, 1000000, 25000);
+    //college career objects
     career[7] = CollegeJob("Teacher", 40000, 70000, 15000); 
     career[8] = CollegeJob("Computer Designer", 50000, 80000, 20000);
     career[9] = CollegeJob("Accountant", 70000, 110000, 30000);
@@ -52,6 +62,7 @@ int main(int argc, char** argv) {
     cout << "Welcome to the Game of Life!" << endl;
     cout << "How many players are there? [2-4]: ";
     cin >> numPlayers;
+    //numPlayers = 2;
     while (numPlayers < 2 || numPlayers > 4){
         cout << "This is a 2-4 player game! Please try again: ";
         cin >> numPlayers;
@@ -64,6 +75,7 @@ int main(int argc, char** argv) {
         cout << "Player " << i+1 << endl;
         cout << "Pick career or college: ";
         cin >> userInput;
+        //userInput = "career";
         for (int i = 0; i < userInput.length(); i++){
             ((char)tolower(userInput[i]));
         }
@@ -79,18 +91,17 @@ int main(int argc, char** argv) {
             cout << "You now have $40,000 of debt." << endl;
             player[i].setTotalDebt(40000.00);
             cout << "Your total debt is now: $" << player[i].getTotalDebt() << endl;
-            player[i].setDegree(true);
+            player[i].setDegree(true);            
             drawCareer(player[i], career);
             int num = rand() % 2 + 1;
             player[i].setSalary(num);
-            cout << num << " " << "career: " << player[i].getCareer().getPosition() << endl;
         }
         else {
             drawCareer(player[i], career);
             int num = rand() % 2 + 1;
             player[i].setSalary(num);
-            cout << num;
         }
+        cout << endl << "Your Career: " << player[i].getCareer().getPosition() << endl;
         cout << "Your Salary: $" << player[i].getSalary() << endl;
     }
     
@@ -99,8 +110,10 @@ int main(int argc, char** argv) {
     do {
         for (int i = 0; i < numPlayers; i++){
             cout << endl << "Player " << i+1 << endl;
+            //spin
             int spinResult;
             spinResult = Spin::initiateSpin();
+            //got caught speeding!
             if (spinResult == 10){
                 for (int p = 0; p < numPlayers; p++){
                     if (player[p].getCareer().getPosition() == "Police Officer"){
@@ -109,13 +122,27 @@ int main(int argc, char** argv) {
                     }
                 }
             }
-            //function for adding board result to board position 
+            player->movePlayerPiece(spinResult);
+        
+        if (player->getCurrentBoardPosition() > 35){
+            gameStats.setMaxBoardPos(player->getCurrentBoardPosition());
+            break;
         }
         
-        
-        
-        //spaces
-        
+            //spaces
+            switch(board[player->getCurrentBoardPosition()]){
+                    case GetRaise:{player->getRaiseSpace();break;}
+                    case LifeTile:{player->lifeTileSpace();break;}
+                    //case TradeSalary:{player.tradeSalarySpace();break;}   //need trade salary function
+                    //case PaySpace:{player.paySpace();break;}              //need pay space to pay other player
+                    case GetMarried:{player->getMarriedSpace();break;}
+                    case KidSpace:{player->kidSpace();break;}
+                    case TaxesDue:{player->taxesDueSpace();break;}
+                    case TaxRefund:{player->taxRefundSpace();break;}
+                    case GetMoney:{player->getMoneySpace();break;}
+                    //case NewCareer:{player.newCareer();break;}            //draw new career function
+            }
+        }
         
         
         
@@ -126,11 +153,10 @@ int main(int argc, char** argv) {
             cout << "You now have $: " << player[i].payDay() << endl;
         }
         cout << endl;    
-    } while (maxBoardPos < 35);
+    } while (gameStats.getMaxBoardPosition() < 35);
     
     
     
-    //cout << Spin::initiateSpin() << endl;
     
     
     
@@ -138,7 +164,7 @@ int main(int argc, char** argv) {
 }
 
 
-void drawCareer(Player player, Job* career){
+void drawCareer(Player &player, Job* career){
     int num;
     if (player.getDegree() == true){
         num = 12;
@@ -160,6 +186,7 @@ void drawCareer(Player player, Job* career){
     cout << "Max Salary: " << career[result2].getMaxSalary() << endl << "Taxes: " << career[result2].getTaxes() << endl;
     int careerSelection;
     cin >> careerSelection;
+    //careerSelection = 1;
     while (careerSelection < 1 || careerSelection > 2){
         cout << "Invalid Selection. Please enter 1 or 2: ";
         cin >> careerSelection;
