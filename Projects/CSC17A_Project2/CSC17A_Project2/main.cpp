@@ -22,6 +22,7 @@ using namespace std;
 #include "Player.h"
 #include "Spin.h"
 #include "GameStats.h"
+#include "StartingPlayerStats.h"
 
 void drawCareer(Player &player, Job *career);
 
@@ -61,21 +62,23 @@ int main(int argc, char** argv) {
     //Game Intro and Player Number Set-Up
     cout << "Welcome to the Game of Life!" << endl;
     cout << "How many players are there? [2-4]: ";
-    cin >> numPlayers;
-    //numPlayers = 2;
+    //cin >> numPlayers;
+    numPlayers = 2;
     while (numPlayers < 2 || numPlayers > 4){
         cout << "This is a 2-4 player game! Please try again: ";
         cin >> numPlayers;
     }
     Player* player = new Player[numPlayers];
+    //StartingPlayerStats* startingPlayerStats = new StartingPlayerStats[numPlayers];
+    StartingPlayerStats startingPlayerStats[numPlayers];
     
     //Set-up Careers and Salaries
     string userInput;
     for (int i = 0; i < numPlayers; i++){
         cout << "Player " << i+1 << endl;
         cout << "Pick career or college: ";
-        cin >> userInput;
-        //userInput = "career";
+        //cin >> userInput;
+        userInput = "career";
         for (int i = 0; i < userInput.length(); i++){
             ((char)tolower(userInput[i]));
         }
@@ -103,7 +106,12 @@ int main(int argc, char** argv) {
         }
         cout << endl << "Your Career: " << player[i].getCareer().getPosition() << endl;
         cout << "Your Salary: $" << player[i].getSalary() << endl;
+        
+        //copying starting player stats 
+        startingPlayerStats[i] = StartingPlayerStats(player[i]);    //: Player(player[i]);
+        
     }
+    
     
     
     //initiate turn sequence 
@@ -117,8 +125,8 @@ int main(int argc, char** argv) {
             if (spinResult == 10){
                 for (int p = 0; p < numPlayers; p++){
                     if (player[p].getCareer().getPosition() == "Police Officer"){
-                        //function for paying 
-                        //function for subtracting
+                        player[i].caughtSpeeding();
+                        player[p].ticketPayment();
                     }
                 }
             }
@@ -128,7 +136,6 @@ int main(int argc, char** argv) {
             gameStats.setMaxBoardPos(player->getCurrentBoardPosition());
             break;
         }
-        
             //spaces
             switch(board[player->getCurrentBoardPosition()]){
                     case GetRaise:{
@@ -166,9 +173,9 @@ int main(int argc, char** argv) {
                     }
                     case GetMoney:{player->getMoneySpace();break;}
                     //case NewCareer:{player.newCareer();break;}            //draw new career function
-            }
-        }
-        
+                }
+        }    
+         
         
         
         //PayDay after each turn
@@ -183,8 +190,12 @@ int main(int argc, char** argv) {
     
     
     
-    
-    
+    cout << "Starting Statistics!" << endl;
+    for (int i = 0; i < numPlayers; i++){
+        cout << "Player " << i+1 << ":" << endl;
+        cout << "Career: " << startingPlayerStats[i].getCareer().getPosition() << endl;
+        cout << "Income: " << startingPlayerStats[i].getSalary() << endl;
+    }
     
     return 0;
 }
@@ -211,8 +222,8 @@ void drawCareer(Player &player, Job* career){
     cout << "2) " << setprecision(2) << fixed << career[result2].getPosition() << endl << "Min Salary: " << career[result2].getMinSalary() << endl;  
     cout << "Max Salary: " << career[result2].getMaxSalary() << endl << "Taxes: " << career[result2].getTaxes() << endl;
     int careerSelection;
-    cin >> careerSelection;
-    //careerSelection = 1;
+    //cin >> careerSelection;
+    careerSelection = 1;
     while (careerSelection < 1 || careerSelection > 2){
         cout << "Invalid Selection. Please enter 1 or 2: ";
         cin >> careerSelection;

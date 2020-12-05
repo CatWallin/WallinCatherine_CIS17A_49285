@@ -10,7 +10,6 @@
 #define JOB_H
 
 using namespace std;
-
 class Job
 {
 protected:
@@ -54,7 +53,7 @@ public:
         return degreeRequired;
     }
     
-    ~Job(){}
+     ~Job(){}
     
 };
 

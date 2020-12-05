@@ -13,7 +13,7 @@
 
 class CollegeJob : public Job
 {
-    protected:
+    private:
         
     public:
         //default constructor

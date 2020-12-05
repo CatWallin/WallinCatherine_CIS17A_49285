@@ -39,7 +39,6 @@ public:
     void setCareer(Job job){        
         career = job;
     }
-    
     void setSalary(int randomNum){
         if (randomNum == 1){
             salary = career.getMinSalary();
@@ -133,6 +132,14 @@ public:
             salary = career.getMaxSalary();
             return salary;
         }
+    }
+    //function if caught speeding!
+    void caughtSpeeding(){
+        totalMoney -= 2000;
+    }
+    //function if another player was speeding and the current player is a police officer 
+    void ticketPayment(){
+        totalMoney +=2000;
     }
     
     void movePlayerPiece(int spinNum){
