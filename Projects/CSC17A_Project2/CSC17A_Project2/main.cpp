@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
     boardTile board[35] = { (boardTile)2, (boardTile)9, (boardTile)3, (boardTile)4, (boardTile)5, (boardTile)2, (boardTile)4, (boardTile)1, (boardTile)6, (boardTile)2, 
                             (boardTile)4, (boardTile)4, (boardTile)3, (boardTile)4, (boardTile)2, (boardTile)1, (boardTile)3, (boardTile)4, (boardTile)2, (boardTile)6, (boardTile)4, 
                             (boardTile)9, (boardTile)3, (boardTile)7, (boardTile)2, (boardTile)10, (boardTile)8, (boardTile)4, (boardTile)1, (boardTile)2, (boardTile)3, (boardTile)4, 
-                            (boardTile)4, (boardTile)4, (boardTile)2 };
+                            (boardTile)1, (boardTile)4, (boardTile)2 };
     
     GameStats gameStats = GameStats();
     
@@ -131,14 +131,39 @@ int main(int argc, char** argv) {
         
             //spaces
             switch(board[player->getCurrentBoardPosition()]){
-                    case GetRaise:{player->getRaiseSpace();break;}
+                    case GetRaise:{
+                        if(player->getSalary() >= player->getCareer().getMaxSalary()){
+                            cout << "You were going to get a raise, but you already make the max salary!" << endl;
+                            cout << "Your current salary: $";
+                        }
+                        else{
+                            cout << "Congrats! You got a raise!" << endl;
+                            cout << "Your new salary: $";
+                        }
+                        cout << player->getRaiseSpace() << endl;
+                        break;
+                    }
                     case LifeTile:{player->lifeTileSpace();break;}
                     //case TradeSalary:{player.tradeSalarySpace();break;}   //need trade salary function
                     //case PaySpace:{player.paySpace();break;}              //need pay space to pay other player
-                    case GetMarried:{player->getMarriedSpace();break;}
-                    case KidSpace:{player->kidSpace();break;}
-                    case TaxesDue:{player->taxesDueSpace();break;}
-                    case TaxRefund:{player->taxRefundSpace();break;}
+                    case GetMarried:{
+                        player->setMarried(true);
+                        cout << "You got married! Congratulations!" << endl;
+                        break;
+                    }
+                    //case KidSpace:{player->kidSpace();break;}
+                    case TaxesDue:{
+                        cout << "Tax Season!" << endl;
+                        cout << "Your taxes paid: $" << player->getCareer().getTaxes() << endl;
+                        cout << "Your current money: $" << player->taxesDueSpace() << endl;                        
+                        break;
+                    }
+                    case TaxRefund:{
+                        cout << "Your tax refund has just arrived!!" << endl;
+                        cout << "Your total refund: $" << player->taxRefundSpace() << endl;
+                        cout << "Your current money: $" << player->getTotalMoney() << endl;                   
+                        break;
+                    }
                     case GetMoney:{player->getMoneySpace();break;}
                     //case NewCareer:{player.newCareer();break;}            //draw new career function
             }
@@ -147,9 +172,10 @@ int main(int argc, char** argv) {
         
         
         //PayDay after each turn
-        
+        cout << endl << "***PAYDAY***" << endl;
         for (int i = 0; i < numPlayers; i++){
-            cout << "Player " << i+1 << endl;
+            
+            cout << "Player " << i+1 << ": ";
             cout << "You now have $: " << player[i].payDay() << endl;
         }
         cout << endl;    

@@ -57,9 +57,6 @@ public:
     void setDegree(bool x){
         degree = x;
     }
-    void setChildren(int c){
-        children = c;
-    }
     void setTotalMoney(double tm){
         totalMoney = tm;
     }
@@ -114,13 +111,11 @@ public:
         totalMoney += salary;
         return totalMoney;
     }
-    void getMarriedSpace(){
-        married = true;
-    }
-    int kidSpace(){
-        children++;
-        return children;
-    }
+    //kidSpace: overloaded operator
+//    Player operator++(){
+//        ++children;
+//        return children;
+//    }
     double taxesDueSpace(){
         totalMoney -= career.getTaxes();
         return totalMoney;
