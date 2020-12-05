@@ -25,6 +25,7 @@ using namespace std;
 #include "StartingPlayerStats.h"
 
 void drawCareer(Player &player, Job *career);
+void swapSalaries(Player &player1, Player &player2);
 
 enum boardTile {GetRaise = 1, LifeTile = 2, TradeSalary = 3, PaySpace = 4, GetMarried = 5, KidSpace = 6, TaxesDue = 7, TaxRefund = 8, GetMoney = 9, NewCareer = 10};
 
@@ -121,25 +122,28 @@ int main(int argc, char** argv) {
             //spin
             int spinResult;
             spinResult = Spin::initiateSpin();
+            cout << "You Spun " << spinResult << endl;
             //got caught speeding!
             if (spinResult == 10){
                 for (int p = 0; p < numPlayers; p++){
                     if (player[p].getCareer().getPosition() == "Police Officer"){
+                        cout << "Uh oh..." << endl;
+                        cout << "Player " << p+1 << " caught you speeding! You got a ticket! Pay up!" << endl;
                         player[i].caughtSpeeding();
                         player[p].ticketPayment();
                     }
                 }
             }
-            player->movePlayerPiece(spinResult);
+            player[i]. operator +(spinResult);
         
-        if (player->getCurrentBoardPosition() > 35){
-            gameStats.setMaxBoardPos(player->getCurrentBoardPosition());
-            break;
+        if (player[i].getCurrentBoardPosition() > 35){
+            gameStats.setMaxBoardPos(player[i].getCurrentBoardPosition());
+            break;                                                                                                                                   
         }
             //spaces
-            switch(board[player->getCurrentBoardPosition()]){
+            switch(board[player[i].getCurrentBoardPosition()]){
                     case GetRaise:{
-                        if(player->getSalary() >= player->getCareer().getMaxSalary()){
+                        if(player[i].getSalary() >= player[i].getCareer().getMaxSalary()){
                             cout << "You were going to get a raise, but you already make the max salary!" << endl;
                             cout << "Your current salary: $";
                         }
@@ -147,32 +151,68 @@ int main(int argc, char** argv) {
                             cout << "Congrats! You got a raise!" << endl;
                             cout << "Your new salary: $";
                         }
-                        cout << player->getRaiseSpace() << endl;
+                        cout << player[i].getRaiseSpace() << endl;
                         break;
                     }
-                    case LifeTile:{player->lifeTileSpace();break;}
-                    //case TradeSalary:{player.tradeSalarySpace();break;}   //need trade salary function
-                    //case PaySpace:{player.paySpace();break;}              //need pay space to pay other player
+                    case LifeTile:{player[i].lifeTileSpace();break;}
+                    case TradeSalary:{
+                        cout << "You can trade salaries with any player." << endl;
+                        cout << "Here are the salaries of every player: " << endl;
+                        for (int q = 0; q < numPlayers; q++){
+                            cout << "Player " << q+1 << " " << player[q].getSalary() << endl;
+                        }
+                        char ynInput;
+                        cout << endl << "Would you like to change salaries with another player? (y/n): ";
+                        cin >> ynInput;
+                        ynInput = tolower(ynInput);
+                        while(ynInput != 'y' && ynInput != 'n'){
+                            cout << "Invalid Input!!! Please enter 'y' or 'n': ";
+                            cin >> ynInput;
+                            ynInput = (tolower(ynInput));
+                        }
+                        if(ynInput == 'y'){
+                            int playerSelection;
+                            cout << "Which player would you like to trade salaries with? (example: '1'): ";
+                            cin >> playerSelection;
+                            while (playerSelection > numPlayers || playerSelection < 1 || playerSelection == i+1){
+                                cout << "Invalid Selection! Please try again: ";
+                                cin >> playerSelection;
+                            }
+                            swapSalaries(player[i], player[playerSelection-1]);
+                            cout << "Player " << i+1 << " Salary: $" << player[i].getSalary() << endl;
+                            cout << "Player " << playerSelection << " Salary: $" << player[playerSelection-1].getSalary() << endl;
+                        }
+                        break;
+                    }   
+                    //case PaySpace:{player.paySpace();break;}              //need pay space to pay other player //or go to school option
                     case GetMarried:{
-                        player->setMarried(true);
+                        player[i].setMarried(true);
                         cout << "You got married! Congratulations!" << endl;
                         break;
                     }
                     //case KidSpace:{player->kidSpace();break;}
                     case TaxesDue:{
                         cout << "Tax Season!" << endl;
-                        cout << "Your taxes paid: $" << player->getCareer().getTaxes() << endl;
-                        cout << "Your current money: $" << player->taxesDueSpace() << endl;                        
+                        cout << "Your taxes paid: $" << player[i].getCareer().getTaxes() << endl;
+                        cout << "Your current money: $" << player[i].taxesDueSpace() << endl;                        
                         break;
                     }
                     case TaxRefund:{
                         cout << "Your tax refund has just arrived!!" << endl;
-                        cout << "Your total refund: $" << player->taxRefundSpace() << endl;
-                        cout << "Your current money: $" << player->getTotalMoney() << endl;                   
+                        cout << "Your total refund: $" << player[i].taxRefundSpace() << endl;
+                        cout << "Your current money: $" << player[i].getTotalMoney() << endl;                   
                         break;
                     }
-                    case GetMoney:{player->getMoneySpace();break;}
-                    //case NewCareer:{player.newCareer();break;}            //draw new career function
+                    case GetMoney:{player[i].getMoneySpace();break;}
+                    case NewCareer:{
+                        cout << "Midlife Crisis... You went looking for a new job.";
+                        drawCareer(player[i], career);
+                        int num = rand() % 2 + 1;
+                        player[i].setSalary(num);
+                        cout << endl << "Your Career: " << player[i].getCareer().getPosition() << endl;
+                        cout << "Your Salary: $" << player[i].getSalary() << endl;
+                        break;
+                    }            
                 }
         }    
          
@@ -200,6 +240,12 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+
+void swapSalaries(Player &player1,Player &player2){
+    double temp = player1.getSalary();
+    player1.changeSalary(player2.getSalary());
+    player2.changeSalary(temp);
+}
 
 void drawCareer(Player &player, Job* career){
     int num;

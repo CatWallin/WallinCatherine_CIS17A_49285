@@ -133,6 +133,11 @@ public:
             return salary;
         }
     }
+    
+    void changeSalary(double newSalary){
+        salary = newSalary;
+    } 
+    
     //function if caught speeding!
     void caughtSpeeding(){
         totalMoney -= 2000;
@@ -142,10 +147,10 @@ public:
         totalMoney +=2000;
     }
     
-    void movePlayerPiece(int spinNum){
-        currentBoardPosition += spinNum;
+    //overloaded operator for player's board position
+    void operator+(int spinResult){
+        currentBoardPosition += spinResult;
     }
-    
     
 };
 
