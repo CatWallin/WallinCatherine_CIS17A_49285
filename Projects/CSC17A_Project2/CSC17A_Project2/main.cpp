@@ -22,10 +22,10 @@ using namespace std;
 #include "Player.h"
 #include "Spin.h"
 #include "GameStats.h"
-#include "StartingPlayerStats.h"
 
 void drawCareer(Player &player, Job *career);
 void swapSalaries(Player &player1, Player &player2);
+void printFinalResults(Player &player, Player &start, GameStats gameStats);
 
 enum boardTile {GetRaise = 1, LifeTile = 2, TradeSalary = 3, PaySpace = 4, GetMarried = 5, KidSpace = 6, TaxesDue = 7, TaxRefund = 8, GetMoney = 9, NewCareer = 10};
 
@@ -61,25 +61,29 @@ int main(int argc, char** argv) {
     
     
     //Game Intro and Player Number Set-Up
-    cout << "Welcome to the Game of Life!" << endl;
+    cout << "--------Welcome to the Game of Life!---------" << endl;
+    cout << "---------------------------------------------" << endl;
+    sleep(1);
     cout << "How many players are there? [2-4]: ";
-    //cin >> numPlayers;
-    numPlayers = 2;
+    cin >> numPlayers;
+    //numPlayers = 2;
     while (numPlayers < 2 || numPlayers > 4){
         cout << "This is a 2-4 player game! Please try again: ";
         cin >> numPlayers;
     }
     Player* player = new Player[numPlayers];
-    //StartingPlayerStats* startingPlayerStats = new StartingPlayerStats[numPlayers];
-    StartingPlayerStats startingPlayerStats[numPlayers];
+    Player* startingPlayerStats = new Player[numPlayers];
     
+    cout << endl << "--------------Career Selection---------------" << endl;
     //Set-up Careers and Salaries
     string userInput;
     for (int i = 0; i < numPlayers; i++){
+        cout << "---------------------------------------------" << endl;
         cout << "Player " << i+1 << endl;
+        sleep(1);
         cout << "Pick career or college: ";
-        //cin >> userInput;
-        userInput = "career";
+        cin >> userInput;
+        //userInput = "career";
         for (int i = 0; i < userInput.length(); i++){
             ((char)tolower(userInput[i]));
         }
@@ -109,7 +113,7 @@ int main(int argc, char** argv) {
         cout << "Your Salary: $" << player[i].getSalary() << endl;
         
         //copying starting player stats 
-        startingPlayerStats[i] = StartingPlayerStats(player[i]);    //: Player(player[i]);
+        startingPlayerStats[i] = Player(player[i]);
         
     }
     
@@ -118,6 +122,7 @@ int main(int argc, char** argv) {
     //initiate turn sequence 
     do {
         for (int i = 0; i < numPlayers; i++){
+            cout << "---------------------------------------------" << endl;
             cout << endl << "Player " << i+1 << endl;
             //spin
             int spinResult;
@@ -128,19 +133,20 @@ int main(int argc, char** argv) {
                 for (int p = 0; p < numPlayers; p++){
                     if (player[p].getCareer().getPosition() == "Police Officer"){
                         cout << "Uh oh..." << endl;
-                        cout << "Player " << p+1 << " caught you speeding! You got a ticket! Pay up!" << endl;
+                        cout << "Player " << p+1 << " caught you speeding! You got a ticket! Pay up!" << endl << endl;
                         player[i].caughtSpeeding();
                         player[p].ticketPayment();
                     }
                 }
             }
-            player[i]. operator +(spinResult);
+            player[i] += spinResult;
         
         if (player[i].getCurrentBoardPosition() > 35){
             gameStats.setMaxBoardPos(player[i].getCurrentBoardPosition());
             break;                                                                                                                                   
         }
             //spaces
+            sleep(1);
             switch(board[player[i].getCurrentBoardPosition()]){
                     case GetRaise:{
                         if(player[i].getSalary() >= player[i].getCareer().getMaxSalary()){
@@ -190,7 +196,11 @@ int main(int argc, char** argv) {
                         cout << "You got married! Congratulations!" << endl;
                         break;
                     }
-                    //case KidSpace:{player->kidSpace();break;}
+                    case KidSpace:{
+                        cout << "Congratulations! You just had a baby!" << endl;
+                        player[i].operator ++();
+                        break;
+                    }
                     case TaxesDue:{
                         cout << "Tax Season!" << endl;
                         cout << "Your taxes paid: $" << player[i].getCareer().getTaxes() << endl;
@@ -205,7 +215,7 @@ int main(int argc, char** argv) {
                     }
                     case GetMoney:{player[i].getMoneySpace();break;}
                     case NewCareer:{
-                        cout << "Midlife Crisis... You went looking for a new job.";
+                        cout << "Midlife Crisis... You went looking for a new job." << endl;
                         drawCareer(player[i], career);
                         int num = rand() % 2 + 1;
                         player[i].setSalary(num);
@@ -219,7 +229,8 @@ int main(int argc, char** argv) {
         
         
         //PayDay after each turn
-        cout << endl << "***PAYDAY***" << endl;
+        cout << endl << "*********PAYDAY*********" << endl;
+        sleep(1);
         for (int i = 0; i < numPlayers; i++){
             
             cout << "Player " << i+1 << ": ";
@@ -228,14 +239,24 @@ int main(int argc, char** argv) {
         cout << endl;    
     } while (gameStats.getMaxBoardPosition() < 35);
     
+    //pay debt
+    for (int i = 0; i < numPlayers; i++){
+        if (player[i].getTotalMoney() > player[i].getTotalDebt()){
+            player[i].payDebt();    
+        }
+    }
     
-    
-    cout << "Starting Statistics!" << endl;
+    //printing out results and final stats
+    cout << "Starting and Ending" << endl;
     for (int i = 0; i < numPlayers; i++){
         cout << "Player " << i+1 << ":" << endl;
-        cout << "Career: " << startingPlayerStats[i].getCareer().getPosition() << endl;
-        cout << "Income: " << startingPlayerStats[i].getSalary() << endl;
+        printFinalResults(player[i], startingPlayerStats[i], gameStats);
+        cout << endl;
     }
+    
+    
+    
+    
     
     return 0;
 }
@@ -268,8 +289,8 @@ void drawCareer(Player &player, Job* career){
     cout << "2) " << setprecision(2) << fixed << career[result2].getPosition() << endl << "Min Salary: " << career[result2].getMinSalary() << endl;  
     cout << "Max Salary: " << career[result2].getMaxSalary() << endl << "Taxes: " << career[result2].getTaxes() << endl;
     int careerSelection;
-    //cin >> careerSelection;
-    careerSelection = 1;
+    cin >> careerSelection;
+    //careerSelection = 1;
     while (careerSelection < 1 || careerSelection > 2){
         cout << "Invalid Selection. Please enter 1 or 2: ";
         cin >> careerSelection;
@@ -282,3 +303,44 @@ void drawCareer(Player &player, Job* career){
     }
 }
 
+void printFinalResults(Player &player, Player &start, GameStats gameStats){
+    player.getCareer().print();
+    if (gameStats.compare<string>(start.getCareer().getPosition(), player.getCareer().getPosition())){
+        cout << endl << "You were dedicated to your career as a " << player.getCareer().getPosition() << " your entire life." << endl;
+    }
+    else {
+        cout << endl << "You jumped around a few careers." << endl;
+        cout << "You started your adult life as a " << start.getCareer().getPosition() << ". " << endl;
+        cout << "You retired as a " << player.getCareer().getPosition() << "." << endl;
+    }
+    if (gameStats.compare<double>(start.getSalary(), player.getSalary())){
+        cout << "You earned the same salary throughout your career: $" << player.getSalary() << endl;
+    }
+    else {
+        cout << "Your income changed a little throughout the years!" << endl;
+        cout << "You started your working life off making $" << start.getSalary();
+        cout << ". You retired making $" << player.getSalary() << "." << endl;
+    }
+    if (player.getMarried()){
+        cout << "You had a beautiful marriage!" << endl;
+    }
+    if (player.getChildren() == 1){
+        cout << "You had a wonderful child!" << endl;
+    }
+    else if (player.getChildren() > 1){
+        cout << "You had " << player.getChildren() << " wonderful children!" << endl;
+    }
+    cout << "You collected " << player.getLifeTileCount() << " total LIFE tile(s)." << endl;
+    if (start.getTotalDebt() > 0 && player.getTotalDebt() == 0){
+        cout << "You paid off $" << start.getTotalDebt() << " worth of debt." << endl;
+        cout << "You now live your life debt free!" << endl;
+    }
+    if (player.getTotalDebt() > 0){
+        cout << "Unfortuntely, you still have some debt... " << endl;
+        cout << "$" << player.getTotalDebt() << " of total debt." << endl;
+    }
+    cout << "You retired with $" << player.getTotalMoney() << " worth of savings!" << endl;
+    
+    
+    
+}

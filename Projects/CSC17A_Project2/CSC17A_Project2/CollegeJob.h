@@ -24,6 +24,9 @@ class CollegeJob : public Job
         CollegeJob(string p, double min, double max, float t):Job(p, min, max, t){
             degreeRequired = true;
         }
+        virtual void print(){
+            cout << "You studied hard and earned your degree!";
+        }
         
             
 };

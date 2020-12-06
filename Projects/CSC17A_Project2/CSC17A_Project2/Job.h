@@ -52,6 +52,10 @@ public:
     bool getDegreeRequired(){
         return degreeRequired;
     }
+    virtual void print(){
+        cout << "You immediately joined the workforce and got to work right away!";
+    }
+    
     
      ~Job(){}
     

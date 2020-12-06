@@ -35,6 +35,18 @@ public:
         currentBoardPosition = 0;
         lifeTileCount = 0;
     }
+    //copy constructor
+    Player(const Player &player){
+        career = player.career;
+        salary = player.salary;
+        married = player.married;
+        degree = player.degree;
+        children = player.children;
+        totalMoney = player.totalMoney;
+        totalDebt = player.totalDebt;
+        currentBoardPosition = player.currentBoardPosition;
+        lifeTileCount = player.lifeTileCount;
+    }
     //mutator functions
     void setCareer(Job job){        
         career = job;
@@ -111,10 +123,10 @@ public:
         return totalMoney;
     }
     //kidSpace: overloaded operator
-//    Player operator++(){
-//        ++children;
-//        return children;
-//    }
+    int operator++(){
+        ++children;
+        return children;
+    }
     double taxesDueSpace(){
         totalMoney -= career.getTaxes();
         return totalMoney;
@@ -148,8 +160,13 @@ public:
     }
     
     //overloaded operator for player's board position
-    void operator+(int spinResult){
+    void operator+=(int spinResult){
         currentBoardPosition += spinResult;
+    }
+    
+    void payDebt(){
+        totalMoney = totalMoney - totalDebt;
+        totalDebt = 0.0;
     }
     
 };

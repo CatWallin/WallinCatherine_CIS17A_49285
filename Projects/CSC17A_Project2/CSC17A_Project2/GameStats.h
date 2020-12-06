@@ -34,6 +34,12 @@ public:
     void setMaxMoney(double newMaxMoney){
         maxMoney = newMaxMoney;
     }
+    
+    template <typename T>
+    bool compare(T x, T y){
+        return (x == y)? true: false;
+    }
+    
 };
 
 #endif /* GAMESTATS_H */
