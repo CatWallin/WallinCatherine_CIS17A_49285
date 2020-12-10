@@ -24,7 +24,7 @@ using namespace std;
 #include "GameStats.h"
 #include "JobBase.h"
 
-void drawCareer(Player &player, JobBase* career);
+void drawCareer(Player &player, JobBase* *career);
 void swapSalaries(Player &player1, Player &player2);
 void printFinalResults(Player &player, Player &start, GameStats gameStats);
 
@@ -101,12 +101,12 @@ int main(int argc, char** argv) {
             player[i].setTotalDebt(40000.00);
             cout << "Your total debt is now: $" << player[i].getTotalDebt() << endl;
             player[i].setDegree(true);            
-            drawCareer(player[i],* career);
+            drawCareer(player[i], career);
             int num = rand() % 2 + 1;
             player[i].setSalary(num);
         }
         else {
-            drawCareer(player[i],* career);
+            drawCareer(player[i], career);
             int num = rand() % 2 + 1;
             player[i].setSalary(num);
         }
@@ -217,7 +217,7 @@ int main(int argc, char** argv) {
                     case GetMoney:{player[i].getMoneySpace();break;}
                     case NewCareer:{
                         cout << "Midlife Crisis... You went looking for a new job." << endl;
-                        drawCareer(player[i],* career);
+                        drawCareer(player[i], career);
                         int num = rand() % 2 + 1;
                         player[i].setSalary(num);
                         cout << endl << "Your Career: " << player[i].getCareer()->getPosition() << endl;
@@ -263,7 +263,7 @@ void swapSalaries(Player &player1,Player &player2){
     player2.changeSalary(temp);
 }
 
-void drawCareer(Player &player, JobBase* career){
+void drawCareer(Player &player, JobBase* *career){
     int num;
     if (player.getDegree() == true){
         num = 12;
@@ -278,14 +278,14 @@ void drawCareer(Player &player, JobBase* career){
         result2 = rand() % num + 1;
     }
     sleep(1);
-    cout << "1) " << setprecision(2) << fixed << career[result1].getPosition() << endl << "Min Salary: " << career[result1].getMinSalary() << endl;
-    cout << "Max Salary: " << career[result1].getMaxSalary() << endl << "Taxes: " << career[result1].getTaxes() << endl;
-    career[result1].printRequirement();
+    cout << "1) " << setprecision(2) << fixed << career[result1]->getPosition() << endl << "Min Salary: " << career[result1]->getMinSalary() << endl;
+    cout << "Max Salary: " << career[result1]->getMaxSalary() << endl << "Taxes: " << career[result1]->getTaxes() << endl;
+    career[result1]->printRequirement();
     cout << endl;
     sleep(1);
-    cout << "2) " << setprecision(2) << fixed << career[result2].getPosition() << endl << "Min Salary: " << career[result2].getMinSalary() << endl;  
-    cout << "Max Salary: " << career[result2].getMaxSalary() << endl << "Taxes: " << career[result2].getTaxes() << endl;
-    career[result2].printRequirement();
+    cout << "2) " << setprecision(2) << fixed << career[result2]->getPosition() << endl << "Min Salary: " << career[result2]->getMinSalary() << endl;  
+    cout << "Max Salary: " << career[result2]->getMaxSalary() << endl << "Taxes: " << career[result2]->getTaxes() << endl;
+    career[result2]->printRequirement();
     cout << endl;
     int careerSelection;
     cin >> careerSelection;

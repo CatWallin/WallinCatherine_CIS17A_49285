@@ -21,7 +21,9 @@ protected:
     float taxes;
     bool degreeRequired;   
     
+    //abstract class to hold basic Job data
 public:
+    //default constructor
     JobBase(){
         position = "0";
         minSalary = 0.0;
@@ -29,6 +31,7 @@ public:
         taxes = 0.0;
         degreeRequired = false;
     }
+    //overloaded constructor
     JobBase(string p, double min, double max, float t){
         position = p;
         minSalary = min;
@@ -50,6 +53,7 @@ public:
     bool getDegreeRequired(){
         return degreeRequired;
     }    
+    //true virtual function 
     virtual void printRequirement() = 0;
     
     

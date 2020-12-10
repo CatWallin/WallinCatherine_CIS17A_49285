@@ -50,8 +50,8 @@ public:
         lifeTileCount = player.lifeTileCount;
     }
     //mutator functions
-    void setCareer(JobBase &job){
-        career = &job;
+    void setCareer(JobBase* job){
+        career = job;
     }
     void setSalary(int randomNum){
         if (randomNum == 1){
