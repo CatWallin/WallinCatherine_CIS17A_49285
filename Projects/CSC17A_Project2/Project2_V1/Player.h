@@ -11,12 +11,11 @@
 
 #include "Job.h"
 #include "CollegeJob.h"
-#include "JobBase.h"
 
 class Player
 {
 protected:
-    JobBase* career;
+    Job career;
     double salary;
     bool married;
     bool degree;
@@ -50,18 +49,18 @@ public:
         lifeTileCount = player.lifeTileCount;
     }
     //mutator functions
-    void setCareer(JobBase &job){
-        career = &job;
+    void setCareer(Job job){
+        career = job;
     }
     void setSalary(int randomNum){
         if (randomNum == 1){
-            salary = career->getMinSalary();
+            salary = career.getMinSalary();
         }
         else if (randomNum == 2){
-            salary = career->getMinSalary() + 10000;
+            salary = career.getMinSalary() + 10000;
         }
         else {
-            salary = career->getMaxSalary() * .75;
+            salary = career.getMaxSalary() * .75;
         }
     }
     void setMarried(bool x){
@@ -83,7 +82,7 @@ public:
         lifeTileCount = ltc;
     }
     //accessor functions
-    JobBase* getCareer(){
+    Job getCareer(){
         return career;
     }
     double getSalary(){
@@ -130,20 +129,20 @@ public:
         return children;
     }
     double taxesDueSpace(){
-        totalMoney -= career->getTaxes();
+        totalMoney -= career.getTaxes();
         return totalMoney;
     }
     float taxRefundSpace(){
-        totalMoney += (career->getTaxes() * .25);
-        return (career->getTaxes() * .25);
+        totalMoney += (career.getTaxes() * .25);
+        return (career.getTaxes() * .25);
     }
     double getRaiseSpace(){
-        if ((career->getMaxSalary()-10000) > salary){
+        if ((career.getMaxSalary()-10000) > salary){
             salary += 10000;
             return salary;
         }
         else{
-            salary = career->getMaxSalary();
+            salary = career.getMaxSalary();
             return salary;
         }
     }

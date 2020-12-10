@@ -9,8 +9,10 @@
 #ifndef JOB_H
 #define JOB_H
 
+#include "JobBase.h"
+
 using namespace std;
-class Job
+class Job : public JobBase
 {
 protected:
     string position;
@@ -20,44 +22,43 @@ protected:
     bool degreeRequired;
 public:
     //default constructor
-    Job(){
-        position = "0";
-        minSalary = 0.0;
-        maxSalary = 0.0;
-        taxes = 0.0;
-        degreeRequired = false;
+    Job() : JobBase(){
+//        position = "0";
+//        minSalary = 0.0;
+//        maxSalary = 0.0;
+//        taxes = 0.0;
+//        degreeRequired = false;
     }
     //constructor
-    Job(string p, double min, double max, float t){
-        position = p;
-        minSalary = min;
-        maxSalary = max;
-        taxes = t;
+      Job(string p, double min, double max, float t) : JobBase(p, min, max, t){
+//        position = p;
+//        minSalary = min;
+//        maxSalary = max;
+//        taxes = t;
         degreeRequired = false;
     }
     
     //accessor functions 
-    string getPosition(){
-        return position;
-    }
-    double getMinSalary(){
-        return minSalary;
-    }
-    double getMaxSalary(){
-        return maxSalary;
-    }
-    float getTaxes(){
-        return taxes;
-    }
-    bool getDegreeRequired(){
-        return degreeRequired;
-    }
-    virtual void print(){
-        cout << "You immediately joined the workforce and got to work right away!";
+//    string getPosition(){
+//        return position;
+//    }
+//    double getMinSalary(){
+//        return minSalary;
+//    }
+//    double getMaxSalary(){
+//        return maxSalary;
+//    }
+//    float getTaxes(){
+//        return taxes;
+//    }
+//    bool getDegreeRequired(){
+//        return degreeRequired;
+//    }    
+    virtual void printRequirement(){
+        cout << "No Degree Required";
     }
     
-    
-     ~Job(){}
+//     ~Job(){}
     
 };
 

@@ -10,11 +10,8 @@
 #define COLLEGEJOB_H
 
 #include "JobBase.h"
-#include "Job.h"
 
-using namespace std;
-
-class CollegeJob : public JobBase
+class CollegeJob : public Job
 {
     private:
         
@@ -24,7 +21,7 @@ class CollegeJob : public JobBase
             degreeRequired = true;
         }
         //constructor
-        CollegeJob(string p, double min, double max, float t):JobBase(p, min, max, t){
+        CollegeJob(string p, double min, double max, float t):Job(p, min, max, t){
             degreeRequired = true;
         }
         void printRequirement(){

@@ -22,9 +22,8 @@ using namespace std;
 #include "Player.h"
 #include "Spin.h"
 #include "GameStats.h"
-#include "JobBase.h"
 
-void drawCareer(Player &player, JobBase* career);
+void drawCareer(Player &player, Job *career);
 void swapSalaries(Player &player1, Player &player2);
 void printFinalResults(Player &player, Player &start, GameStats gameStats);
 
@@ -43,21 +42,21 @@ int main(int argc, char** argv) {
     GameStats gameStats = GameStats();
     
     //regular career objects
-    JobBase* career[13];
-    career[0] = new Job(); //operator overloading for Job class
-    career[1] = new Job("Sales Person", 20000, 50000, 5000);
-    career[2] = new Job("Hair Stylist", 30000, 60000, 10000);
-    career[3] = new Job("Mechanic", 30000, 60000, 10000);
-    career[4] = new Job("Police Officer", 40000, 70000, 15000);
-    career[5] = new Job("Entertainer", 50000, 1000000, 20000);
-    career[6] = new Job("Athlete", 60000, 1000000, 25000);
+    Job career[13];
+    career[0] = Job(); //operator overloading for Job class
+    career[1] = Job("Sales Person", 20000, 50000, 5000);
+    career[2] = Job("Hair Stylist", 30000, 60000, 10000);
+    career[3] = Job("Mechanic", 30000, 60000, 10000);
+    career[4] = Job("Police Officer", 40000, 70000, 15000);
+    career[5] = Job("Entertainer", 50000, 1000000, 20000);
+    career[6] = Job("Athlete", 60000, 1000000, 25000);
     //college career objects
-    career[7] = new CollegeJob("Teacher", 40000, 70000, 15000); 
-    career[8] = new CollegeJob("Computer Designer", 50000, 80000, 20000);
-    career[9] = new CollegeJob("Accountant", 70000, 110000, 30000);
-    career[10] = new CollegeJob("Veterinarian", 80000, 120000, 35000);
-    career[11] = new CollegeJob("Lawyer", 90000, 1000000, 40000);
-    career[12] = new CollegeJob("Doctor", 100000, 1000000, 45000);
+    career[7] = CollegeJob("Teacher", 40000, 70000, 15000); 
+    career[8] = CollegeJob("Computer Designer", 50000, 80000, 20000);
+    career[9] = CollegeJob("Accountant", 70000, 110000, 30000);
+    career[10] = CollegeJob("Veterinarian", 80000, 120000, 35000);
+    career[11] = CollegeJob("Lawyer", 90000, 1000000, 40000);
+    career[12] = CollegeJob("Doctor", 100000, 1000000, 45000);
     
     
     
@@ -101,16 +100,16 @@ int main(int argc, char** argv) {
             player[i].setTotalDebt(40000.00);
             cout << "Your total debt is now: $" << player[i].getTotalDebt() << endl;
             player[i].setDegree(true);            
-            drawCareer(player[i],* career);
+            drawCareer(player[i], career);
             int num = rand() % 2 + 1;
             player[i].setSalary(num);
         }
         else {
-            drawCareer(player[i],* career);
+            drawCareer(player[i], career);
             int num = rand() % 2 + 1;
             player[i].setSalary(num);
         }
-        cout << endl << "Your Career: " << player[i].getCareer()->getPosition() << endl;
+        cout << endl << "Your Career: " << player[i].getCareer().getPosition() << endl;
         cout << "Your Salary: $" << player[i].getSalary() << endl;
         
         //copying starting player stats 
@@ -132,7 +131,7 @@ int main(int argc, char** argv) {
             //got caught speeding!
             if (spinResult == 10){
                 for (int p = 0; p < numPlayers; p++){
-                    if (player[p].getCareer()->getPosition() == "Police Officer"){
+                    if (player[p].getCareer().getPosition() == "Police Officer"){
                         cout << "Uh oh..." << endl;
                         cout << "Player " << p+1 << " caught you speeding! You got a ticket! Pay up!" << endl << endl;
                         player[i].caughtSpeeding();
@@ -150,7 +149,7 @@ int main(int argc, char** argv) {
             sleep(1);
             switch(board[player[i].getCurrentBoardPosition()]){
                     case GetRaise:{
-                        if(player[i].getSalary() >= player[i].getCareer()->getMaxSalary()){
+                        if(player[i].getSalary() >= player[i].getCareer().getMaxSalary()){
                             cout << "You were going to get a raise, but you already make the max salary!" << endl;
                             cout << "Your current salary: $";
                         }
@@ -204,7 +203,7 @@ int main(int argc, char** argv) {
                     }
                     case TaxesDue:{
                         cout << "Tax Season!" << endl;
-                        cout << "Your taxes paid: $" << player[i].getCareer()->getTaxes() << endl;
+                        cout << "Your taxes paid: $" << player[i].getCareer().getTaxes() << endl;
                         cout << "Your current money: $" << player[i].taxesDueSpace() << endl;                        
                         break;
                     }
@@ -217,10 +216,10 @@ int main(int argc, char** argv) {
                     case GetMoney:{player[i].getMoneySpace();break;}
                     case NewCareer:{
                         cout << "Midlife Crisis... You went looking for a new job." << endl;
-                        drawCareer(player[i],* career);
+                        drawCareer(player[i], career);
                         int num = rand() % 2 + 1;
                         player[i].setSalary(num);
-                        cout << endl << "Your Career: " << player[i].getCareer()->getPosition() << endl;
+                        cout << endl << "Your Career: " << player[i].getCareer().getPosition() << endl;
                         cout << "Your Salary: $" << player[i].getSalary() << endl;
                         break;
                     }            
@@ -263,7 +262,7 @@ void swapSalaries(Player &player1,Player &player2){
     player2.changeSalary(temp);
 }
 
-void drawCareer(Player &player, JobBase* career){
+void drawCareer(Player &player, Job* career){
     int num;
     if (player.getDegree() == true){
         num = 12;
@@ -309,13 +308,13 @@ void printFinalResults(Player &player, Player &start, GameStats gameStats){
     else {
         cout << "You joined the workforce immediately with determination!" << endl;
     }
-    if (gameStats.compare<string>(start.getCareer()->getPosition(), player.getCareer()->getPosition())){
-        cout << "You were dedicated to your career as a " << player.getCareer()->getPosition() << " your entire life." << endl;
+    if (gameStats.compare<string>(start.getCareer().getPosition(), player.getCareer().getPosition())){
+        cout << "You were dedicated to your career as a " << player.getCareer().getPosition() << " your entire life." << endl;
     }
     else {
         cout << "You jumped around a few careers." << endl;
-        cout << "You started your adult life as a " << start.getCareer()->getPosition() << ". " << endl;
-        cout << "You retired as a " << player.getCareer()->getPosition() << "." << endl;
+        cout << "You started your adult life as a " << start.getCareer().getPosition() << ". " << endl;
+        cout << "You retired as a " << player.getCareer().getPosition() << "." << endl;
     }
     if (gameStats.compare<double>(start.getSalary(), player.getSalary())){
         cout << "You earned the same salary throughout your career: $" << player.getSalary() << endl;
