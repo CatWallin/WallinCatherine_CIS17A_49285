@@ -23,6 +23,7 @@ using namespace std;
 #include "Spin.h"
 #include "GameStats.h"
 #include "JobBase.h"
+#include "FinalPlayerStats.h"
 
 void drawCareer(Player &player, JobBase* *career);
 void swapSalaries(Player &player1, Player &player2);
@@ -66,14 +67,15 @@ int main(int argc, char** argv) {
     cout << "---------------------------------------------" << endl;
     sleep(1);
     cout << "How many players are there? [2-4]: ";
-    cin >> numPlayers;
-    //numPlayers = 2;
+    //cin >> numPlayers;
+    numPlayers = 4;
     while (numPlayers < 2 || numPlayers > 4){
         cout << "This is a 2-4 player game! Please try again: ";
         cin >> numPlayers;
     }
     Player* player = new Player[numPlayers];
     Player* startingPlayerStats = new Player[numPlayers];
+    FinalPlayerStats* finalPlayerStats = new FinalPlayerStats[numPlayers];
     
     cout << endl << "--------------Career Selection---------------" << endl;
     //Set-up Careers and Salaries
@@ -83,8 +85,8 @@ int main(int argc, char** argv) {
         cout << "Player " << i+1 << endl;
         sleep(1);
         cout << "Pick career or college: ";
-        cin >> userInput;
-        //userInput = "career";
+        //cin >> userInput;
+        userInput = "career";
         for (int i = 0; i < userInput.length(); i++){
             ((char)tolower(userInput[i]));
         }
@@ -170,7 +172,8 @@ int main(int argc, char** argv) {
                         }
                         char ynInput;
                         cout << endl << "Would you like to change salaries with another player? (y/n): ";
-                        cin >> ynInput;
+                        //cin >> ynInput;
+                        ynInput = 'n';
                         ynInput = tolower(ynInput);
                         while(ynInput != 'y' && ynInput != 'n'){
                             cout << "Invalid Input!!! Please enter 'y' or 'n': ";
@@ -219,7 +222,13 @@ int main(int argc, char** argv) {
                         cout << "Midlife Crisis... You went looking for a new job." << endl;
                         drawCareer(player[i], career);
                         int num = rand() % 2 + 1;
+                        try
+                        {
                         player[i].setSalary(num);
+                        }
+                        catch (Player::InvalidSalary){
+                            cout << "Uh oh... Invalid Salary..." << endl;
+                        }
                         cout << endl << "Your Career: " << player[i].getCareer()->getPosition() << endl;
                         cout << "Your Salary: $" << player[i].getSalary() << endl;
                         break;
@@ -245,11 +254,30 @@ int main(int argc, char** argv) {
         }
     }
     
+    //copy final player objects to an array of objects that holds the final data
+    //calculate each player's final score
+    for (int i = 0; i < numPlayers; i++){
+        finalPlayerStats[i] = Player(player[i]);
+        finalPlayerStats[i].setFinalScore();
+        finalPlayerStats[i].setFinalPlace(numPlayers);
+    }
+    
+    //calculate players' place! 
+    for (int i = 0; i < numPlayers; i++){
+        for (int m = 0; m < numPlayers; m++){
+            if((finalPlayerStats[i].getFinalScore()) > (finalPlayerStats[m].getFinalScore())){
+                --finalPlayerStats[i];
+            }
+        }
+    }
+       
     //printing out results and final stats
     cout << "Starting and Ending" << endl;
     for (int i = 0; i < numPlayers; i++){
         cout << "Player " << i+1 << ":" << endl;
-        printFinalResults(player[i], startingPlayerStats[i], gameStats);
+        printFinalResults(finalPlayerStats[i], startingPlayerStats[i], gameStats);
+        cout << "Your Final Score: " << finalPlayerStats[i].getFinalScore() << endl;
+        cout << "Your Finishing Place:  " << finalPlayerStats[i].getFinalPlace() << endl;
         cout << endl;
     }
     
@@ -288,8 +316,8 @@ void drawCareer(Player &player, JobBase* *career){
     career[result2]->printRequirement();
     cout << endl;
     int careerSelection;
-    cin >> careerSelection;
-    //careerSelection = 1;
+    //cin >> careerSelection;
+    careerSelection = 1;
     while (careerSelection < 1 || careerSelection > 2){
         cout << "Invalid Selection. Please enter 1 or 2: ";
         cin >> careerSelection;

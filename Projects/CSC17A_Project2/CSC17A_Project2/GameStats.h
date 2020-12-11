@@ -12,19 +12,25 @@ class GameStats
 {
 private:
     int maxBoardPosition;
-    double maxMoney;
+    float maxMoney;
+    float minMoney;
+    float midMoney;
 public:
     GameStats(){
         maxBoardPosition = 0;
         maxMoney = 0;
+        minMoney = 0;
     };
     
     //accessor functions
     int getMaxBoardPosition(){
         return maxBoardPosition;
     }
-    double getMaxMoney(){
+    float getMaxMoney(){
         return maxMoney;
+    }
+    float getMinMoney(){
+        return minMoney;
     }
     
     //setter functions
@@ -34,7 +40,10 @@ public:
     void setMaxMoney(double newMaxMoney){
         maxMoney = newMaxMoney;
     }
-    
+    void setMinMoney(double newMin){
+        minMoney = newMin;
+    }
+   
     //template to compare starting and ending variables 
     template <typename T>
     bool compare(T x, T y){

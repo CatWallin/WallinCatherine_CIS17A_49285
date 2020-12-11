@@ -63,6 +63,9 @@ public:
         else {
             salary = career->getMaxSalary() * .75;
         }
+        if (salary > career->getMaxSalary() || salary < career->getMinSalary()){
+            throw InvalidSalary();
+        }
     }
     void setMarried(bool x){
         married = x;
@@ -170,6 +173,8 @@ public:
         totalMoney = totalMoney - totalDebt;
         totalDebt = 0.0;
     }
+    
+    class InvalidSalary{};
     
 };
 
