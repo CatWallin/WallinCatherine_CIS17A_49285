@@ -14,7 +14,6 @@ private:
     int maxBoardPosition;
     float maxMoney;
     float minMoney;
-    float midMoney;
 public:
     GameStats(){
         maxBoardPosition = 0;

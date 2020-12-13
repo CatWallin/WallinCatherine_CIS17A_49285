@@ -67,8 +67,8 @@ int main(int argc, char** argv) {
     cout << "---------------------------------------------" << endl;
     sleep(1);
     cout << "How many players are there? [2-4]: ";
-    //cin >> numPlayers;
-    numPlayers = 4;
+    cin >> numPlayers;
+    //numPlayers = 4;
     while (numPlayers < 2 || numPlayers > 4){
         cout << "This is a 2-4 player game! Please try again: ";
         cin >> numPlayers;
@@ -85,8 +85,8 @@ int main(int argc, char** argv) {
         cout << "Player " << i+1 << endl;
         sleep(1);
         cout << "Pick career or college: ";
-        //cin >> userInput;
-        userInput = "career";
+        cin >> userInput;
+        //userInput = "career";
         for (int i = 0; i < userInput.length(); i++){
             ((char)tolower(userInput[i]));
         }
@@ -172,8 +172,8 @@ int main(int argc, char** argv) {
                         }
                         char ynInput;
                         cout << endl << "Would you like to change salaries with another player? (y/n): ";
-                        //cin >> ynInput;
-                        ynInput = 'n';
+                        cin >> ynInput;
+                        //ynInput = 'n';
                         ynInput = tolower(ynInput);
                         while(ynInput != 'y' && ynInput != 'n'){
                             cout << "Invalid Input!!! Please enter 'y' or 'n': ";
@@ -316,8 +316,8 @@ void drawCareer(Player &player, JobBase* *career){
     career[result2]->printRequirement();
     cout << endl;
     int careerSelection;
-    //cin >> careerSelection;
-    careerSelection = 1;
+    cin >> careerSelection;
+    //careerSelection = 1;
     while (careerSelection < 1 || careerSelection > 2){
         cout << "Invalid Selection. Please enter 1 or 2: ";
         cin >> careerSelection;
