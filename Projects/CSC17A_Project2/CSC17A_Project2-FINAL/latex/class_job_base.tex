@@ -1,0 +1,195 @@
+\doxysection{Job\+Base Class Reference}
+\label{class_job_base}\index{JobBase@{JobBase}}
+
+
+{\ttfamily \#include $<$Job\+Base.\+h$>$}
+
+Inheritance diagram for Job\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_job_base}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Job\+Base} ()
+\item 
+\textbf{ Job\+Base} (string p, float \textbf{ min}, float \textbf{ max}, float t)
+\item 
+string \textbf{ get\+Position} ()
+\item 
+float \textbf{ get\+Min\+Salary} ()
+\item 
+float \textbf{ get\+Max\+Salary} ()
+\item 
+float \textbf{ get\+Taxes} ()
+\item 
+bool \textbf{ get\+Degree\+Required} ()
+\item 
+virtual void \textbf{ print\+Requirement} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \textbf{ position}
+\item 
+float \textbf{ min\+Salary}
+\item 
+float \textbf{ max\+Salary}
+\item 
+float \textbf{ taxes}
+\item 
+bool \textbf{ degree\+Required}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 14 of file Job\+Base.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_job_base_a25814e16158174d5f9fb2857411e076f}} 
+\index{JobBase@{JobBase}!JobBase@{JobBase}}
+\index{JobBase@{JobBase}!JobBase@{JobBase}}
+\doxysubsubsection{JobBase()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Job\+Base\+::\+Job\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 25 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_aeb7e2ee20aa5228833c900f1c30deb88}} 
+\index{JobBase@{JobBase}!JobBase@{JobBase}}
+\index{JobBase@{JobBase}!JobBase@{JobBase}}
+\doxysubsubsection{JobBase()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Job\+Base\+::\+Job\+Base (\begin{DoxyParamCaption}\item[{string}]{p,  }\item[{float}]{min,  }\item[{float}]{max,  }\item[{float}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 33 of file Job\+Base.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_job_base_ab9c6119901a57408232c44a099d5296c}} 
+\index{JobBase@{JobBase}!getDegreeRequired@{getDegreeRequired}}
+\index{getDegreeRequired@{getDegreeRequired}!JobBase@{JobBase}}
+\doxysubsubsection{getDegreeRequired()}
+{\footnotesize\ttfamily bool Job\+Base\+::get\+Degree\+Required (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_a4beedbda397fc2865e44ad801cf7a269}} 
+\index{JobBase@{JobBase}!getMaxSalary@{getMaxSalary}}
+\index{getMaxSalary@{getMaxSalary}!JobBase@{JobBase}}
+\doxysubsubsection{getMaxSalary()}
+{\footnotesize\ttfamily float Job\+Base\+::get\+Max\+Salary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 45 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_ab75f1baf8dd1504fe74c9f2eb572c0e8}} 
+\index{JobBase@{JobBase}!getMinSalary@{getMinSalary}}
+\index{getMinSalary@{getMinSalary}!JobBase@{JobBase}}
+\doxysubsubsection{getMinSalary()}
+{\footnotesize\ttfamily float Job\+Base\+::get\+Min\+Salary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 42 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_afd6f040e0c3097c10485ebae6535a0e4}} 
+\index{JobBase@{JobBase}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!JobBase@{JobBase}}
+\doxysubsubsection{getPosition()}
+{\footnotesize\ttfamily string Job\+Base\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 39 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_a9815cf9b76ed0fe9fa6de8fee1299837}} 
+\index{JobBase@{JobBase}!getTaxes@{getTaxes}}
+\index{getTaxes@{getTaxes}!JobBase@{JobBase}}
+\doxysubsubsection{getTaxes()}
+{\footnotesize\ttfamily float Job\+Base\+::get\+Taxes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 48 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_a98fb158b83d74c99d61538c66182ee08}} 
+\index{JobBase@{JobBase}!printRequirement@{printRequirement}}
+\index{printRequirement@{printRequirement}!JobBase@{JobBase}}
+\doxysubsubsection{printRequirement()}
+{\footnotesize\ttfamily virtual void Job\+Base\+::print\+Requirement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \textbf{ Job} \doxyref{}{p.}{class_job_a8506d1e06c7ae74ad321e2b849ea48be}, and \textbf{ College\+Job} \doxyref{}{p.}{class_college_job_ae19dcd27c801fd8b0d3facb76f478c68}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_job_base_a14304bb94e31b72e75e0da33670c0504}} 
+\index{JobBase@{JobBase}!degreeRequired@{degreeRequired}}
+\index{degreeRequired@{degreeRequired}!JobBase@{JobBase}}
+\doxysubsubsection{degreeRequired}
+{\footnotesize\ttfamily bool Job\+Base\+::degree\+Required\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 21 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_aa0c702e7880b0bf4a47c78bf7b9ad850}} 
+\index{JobBase@{JobBase}!maxSalary@{maxSalary}}
+\index{maxSalary@{maxSalary}!JobBase@{JobBase}}
+\doxysubsubsection{maxSalary}
+{\footnotesize\ttfamily float Job\+Base\+::max\+Salary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 19 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_a022882bb64f1c4fa0e07e1878834b3b0}} 
+\index{JobBase@{JobBase}!minSalary@{minSalary}}
+\index{minSalary@{minSalary}!JobBase@{JobBase}}
+\doxysubsubsection{minSalary}
+{\footnotesize\ttfamily float Job\+Base\+::min\+Salary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 18 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_a21dcb65833440ab29eadb23bd3b1b194}} 
+\index{JobBase@{JobBase}!position@{position}}
+\index{position@{position}!JobBase@{JobBase}}
+\doxysubsubsection{position}
+{\footnotesize\ttfamily string Job\+Base\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 17 of file Job\+Base.\+h.
+
+\mbox{\label{class_job_base_ab01b0340e136b5c053260401c756e41c}} 
+\index{JobBase@{JobBase}!taxes@{taxes}}
+\index{taxes@{taxes}!JobBase@{JobBase}}
+\doxysubsubsection{taxes}
+{\footnotesize\ttfamily float Job\+Base\+::taxes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 20 of file Job\+Base.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Job\+Base.\+h}\end{DoxyCompactItemize}

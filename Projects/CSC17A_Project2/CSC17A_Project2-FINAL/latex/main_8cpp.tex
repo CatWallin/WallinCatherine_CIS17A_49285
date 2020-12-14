@@ -1,0 +1,170 @@
+\doxysection{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include \char`\"{}College\+Job.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Player.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Spin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Game\+Stats.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Job\+Base.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Final\+Player\+Stats.\+h\char`\"{}}\newline
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ board\+Tile} \{ \newline
+\textbf{ Get\+Raise} = 1, 
+\textbf{ Life\+Tile} = 2, 
+\textbf{ Trade\+Salary} = 3, 
+\textbf{ Pay\+Space} = 4, 
+\newline
+\textbf{ Get\+Married} = 5, 
+\textbf{ Kid\+Space} = 6, 
+\textbf{ Taxes\+Due} = 7, 
+\textbf{ Tax\+Refund} = 8, 
+\newline
+\textbf{ Get\+Money} = 9, 
+\textbf{ New\+Career} = 10
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ draw\+Career} (\textbf{ Player} \&player, \textbf{ Job\+Base} $\ast$$\ast$career)
+\item 
+void \textbf{ swap\+Salaries} (\textbf{ Player} \&player1, \textbf{ Player} \&player2)
+\item 
+void \textbf{ print\+Final\+Results} (\textbf{ Player} \&player, \textbf{ Player} \&start, \textbf{ Game\+Stats} game\+Stats)
+\item 
+void \textbf{ print\+Pay\+Message} (\textbf{ Player} \&player)
+\item 
+void \textbf{ pay\+Debt} (\textbf{ Player} \&player)
+\item 
+int \textbf{ main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1}} 
+\index{main.cpp@{main.cpp}!boardTile@{boardTile}}
+\index{boardTile@{boardTile}!main.cpp@{main.cpp}}
+\doxysubsubsection{boardTile}
+{\footnotesize\ttfamily enum \textbf{ board\+Tile}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GetRaise@{GetRaise}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!GetRaise@{GetRaise}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1a6dae6fd1f905b852c9f3f1efa554ef3f}} 
+Get\+Raise&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LifeTile@{LifeTile}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!LifeTile@{LifeTile}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1a6e0d3798e409bb42ef27ad95d8fcad33}} 
+Life\+Tile&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TradeSalary@{TradeSalary}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!TradeSalary@{TradeSalary}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1aed2bf6bf53b138b061f050353634abd4}} 
+Trade\+Salary&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PaySpace@{PaySpace}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!PaySpace@{PaySpace}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1ac017342dd0ccc89f6ef0ef009912e3ae}} 
+Pay\+Space&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GetMarried@{GetMarried}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!GetMarried@{GetMarried}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1a8357c797006ed5dcd95d752764bec08a}} 
+Get\+Married&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KidSpace@{KidSpace}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!KidSpace@{KidSpace}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1acb5502d16099bc9a406d156248ae3f29}} 
+Kid\+Space&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaxesDue@{TaxesDue}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!TaxesDue@{TaxesDue}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1a10f1b2118317cf94075803e7d0bab610}} 
+Taxes\+Due&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaxRefund@{TaxRefund}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!TaxRefund@{TaxRefund}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1a47cb495b6658c1ce73fc099dfd4cbb45}} 
+Tax\+Refund&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GetMoney@{GetMoney}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!GetMoney@{GetMoney}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1a975253b32339cf5cb6ab63413f5cd781}} 
+Get\+Money&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NewCareer@{NewCareer}!main.cpp@{main.cpp}}\index{main.cpp@{main.cpp}!NewCareer@{NewCareer}}}\mbox{\label{main_8cpp_ae3c884a2649e84aa460276e216f127a1ab25170fe0a4c04d0ddc4fee70464fd2b}} 
+New\+Career&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 36 of file main.\+cpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\label{main_8cpp_adac314c72ee0cbccf019c1e340cce53b}} 
+\index{main.cpp@{main.cpp}!drawCareer@{drawCareer}}
+\index{drawCareer@{drawCareer}!main.cpp@{main.cpp}}
+\doxysubsubsection{drawCareer()}
+{\footnotesize\ttfamily void draw\+Career (\begin{DoxyParamCaption}\item[{\textbf{ Player} \&}]{player,  }\item[{\textbf{ Job\+Base} $\ast$$\ast$}]{career }\end{DoxyParamCaption})}
+
+
+
+Definition at line 322 of file main.\+cpp.
+
+\mbox{\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file main.\+cpp.
+
+\mbox{\label{main_8cpp_a25f19bc8409f8f42c377efb6a7025f15}} 
+\index{main.cpp@{main.cpp}!payDebt@{payDebt}}
+\index{payDebt@{payDebt}!main.cpp@{main.cpp}}
+\doxysubsubsection{payDebt()}
+{\footnotesize\ttfamily void pay\+Debt (\begin{DoxyParamCaption}\item[{\textbf{ Player} \&}]{player }\end{DoxyParamCaption})}
+
+
+
+Definition at line 450 of file main.\+cpp.
+
+\mbox{\label{main_8cpp_a6dfc2a1e736c1e03400c73c9ad76c2b1}} 
+\index{main.cpp@{main.cpp}!printFinalResults@{printFinalResults}}
+\index{printFinalResults@{printFinalResults}!main.cpp@{main.cpp}}
+\doxysubsubsection{printFinalResults()}
+{\footnotesize\ttfamily void print\+Final\+Results (\begin{DoxyParamCaption}\item[{\textbf{ Player} \&}]{player,  }\item[{\textbf{ Player} \&}]{start,  }\item[{\textbf{ Game\+Stats}}]{game\+Stats }\end{DoxyParamCaption})}
+
+
+
+Definition at line 366 of file main.\+cpp.
+
+\mbox{\label{main_8cpp_ac36015a00d64e638e5dd79d46f0fffd1}} 
+\index{main.cpp@{main.cpp}!printPayMessage@{printPayMessage}}
+\index{printPayMessage@{printPayMessage}!main.cpp@{main.cpp}}
+\doxysubsubsection{printPayMessage()}
+{\footnotesize\ttfamily void print\+Pay\+Message (\begin{DoxyParamCaption}\item[{\textbf{ Player} \&}]{player }\end{DoxyParamCaption})}
+
+
+
+Definition at line 411 of file main.\+cpp.
+
+\mbox{\label{main_8cpp_a678d2717440220d1a723121eddf7da2b}} 
+\index{main.cpp@{main.cpp}!swapSalaries@{swapSalaries}}
+\index{swapSalaries@{swapSalaries}!main.cpp@{main.cpp}}
+\doxysubsubsection{swapSalaries()}
+{\footnotesize\ttfamily void swap\+Salaries (\begin{DoxyParamCaption}\item[{\textbf{ Player} \&}]{player1,  }\item[{\textbf{ Player} \&}]{player2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 316 of file main.\+cpp.
+
