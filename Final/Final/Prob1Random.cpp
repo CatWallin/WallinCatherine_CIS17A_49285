@@ -1,17 +1,21 @@
 
 #include <iostream>
+#include <string.h>
 #include "Prob1Random.h"
 
 using namespace std;
 
 Prob1Random::Prob1Random(const char n,const char *rndseq){       //Constructor
+    numRand = 0;
     nset = n;
-    set = new char[n];
-    for (int i = 0; i < n; i++){
+    set = new char[nset];
+    for (int i = 0; i < nset; i++){
         set[i] = rndseq[i];
     }
-        freq = new int[n];
-        numRand = 0;
+        freq = new int[nset];
+        for (int i = 0; i < nset; i++){
+            freq[i] = 0;
+        }
 }     
                 
 Prob1Random::~Prob1Random(void){                     //Destructor     
@@ -20,12 +24,11 @@ Prob1Random::~Prob1Random(void){                     //Destructor
 }
                 
 char Prob1Random::randFromSet(void){                 //Returns a random number from the set
-    int generatedNum = 0;
+    int generatedNum = (rand() % nset);
     numRand++;
-    srand ( time(__null));
-    generatedNum = (rand() % nset);
-    freq[generatedNum] += 1;
+    freq[generatedNum]++;
     return set[generatedNum];
+    
 }
                  
 int * Prob1Random::getFreq(void) const{              //Returns the frequency histogram

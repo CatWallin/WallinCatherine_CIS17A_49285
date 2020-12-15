@@ -25,13 +25,24 @@ void  SavingsAccount::Transaction(float input){                  //Procedure
     }
 }            
 
-float SavingsAccount::Total(float savint,int time){             //Savings Procedure
-    float total = Balance;
-    return Balance;
+float SavingsAccount::Total(float savint,int time){             //Savings Procedure                                               
+    float equation = 1;
+    for (int i = 0; i < time; i++){
+        equation *= ( 1+ savint);                                 //Balance*(1+savint)^time
+    }
+    return (equation * Balance);
 }            
      
 float SavingsAccount::TotalRecursive(float savint,int time){
-    return Balance;
+    //time--;
+    //float equation = 1;
+    //equation *= (1 + savint);
+    if (time == 0){
+        return savint;
+    }
+    else {
+        return TotalRecursive(savint, time-1)*(1 + time);
+    }
 }
 
 void  SavingsAccount::toString(){                               //Output Properties

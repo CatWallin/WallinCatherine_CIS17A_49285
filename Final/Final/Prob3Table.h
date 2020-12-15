@@ -20,7 +20,7 @@ class Prob3Table
 		T grandTotal;                             //Grand total
 		void calcTable(void);                     //Calculate all the sums
 	public:
-		Prob3Table(char *,int,int);               //Constructor then Destructor
+		Prob3Table(char *, int, int);               //Constructor then Destructor
 		~Prob3Table(){delete [] table;delete [] rowSum;delete [] colSum;};
 		const T *getTable(void){return table;};
 		const T *getRowSum(void){return rowSum;};

@@ -7,6 +7,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -15,9 +16,10 @@ using namespace std;
 #include "Prob1Random.h"
 #include "Prob2Sort.h"
 #include "Prob3Table.h"
+#include "Prob3Table.tcc"
 #include "Prob3TableInherited.h"
+#include "Prob3TableInherited.tcc"
 #include "SavingsAccount.h"
-
 
 void menu();
 void prblm1();
@@ -34,6 +36,7 @@ int main(int argc, char** argv) {
     do{
         menu();
         cin>>choice;
+        //choice = '1';
 
         //Process/Map inputs to outputs
         switch(choice){
@@ -80,29 +83,29 @@ void prblm1(){
 }
 
 void prblm2(){
-    cout<<"The start of Problem 2, the sorting problem"<<endl;
-	Prob2Sort<char> rc;
-	bool ascending=true;
-	ifstream infile;
-	infile.open("Problem2.txt",ios::in);
-	char *ch2=new char[10*16];
-	char *ch2p=ch2;
-	while(infile.get(*ch2)){cout<<*ch2;ch2++;}
-	infile.close();
-	cout<<endl;
-	cout<<"Sorting on which column"<<endl;
-	int column;
-	cin>>column;
-	char *zc=rc.sortArray(ch2p,10,16,column,ascending);
-	for(int i=0;i<10;i++)
-	{
-		for(int j=0;j<16;j++)
-		{
-			cout<<zc[i*16+j];
-		}
-	}
-	delete []zc;
-	cout<<endl;
+//    cout<<"The start of Problem 2, the sorting problem"<<endl;
+//	Prob2Sort<char> rc;
+//	bool ascending=true;
+//	ifstream infile;
+//	infile.open("Problem2.txt",ios::in);
+//	char *ch2=new char[10*16];
+//	char *ch2p=ch2;
+//	while(infile.get(*ch2)){cout<<*ch2;ch2++;}
+//	infile.close();
+//	cout<<endl;
+//	cout<<"Sorting on which column"<<endl;
+//	int column;
+//	cin>>column;
+//	char *zc=rc.sortArray(ch2p,10,16,column,ascending);
+//	for(int i=0;i<10;i++)
+//	{
+//		for(int j=0;j<16;j++)
+//		{
+//			cout<<zc[i*16+j];
+//		}
+//	}
+//	delete []zc;
+//	cout<<endl;
 }
 
 void prblm3(){
@@ -133,11 +136,17 @@ void prblm3(){
 
 void prblm4(){
     SavingsAccount mine(-300);
-
-	for(int i=1;i<=10;i++)
+        
+        for(int i=1;i<=10;i++)
 	{
+            try{
 		mine.Transaction((float)(rand()%500)*(rand()%3-1));
-	}
+            }
+            catch (SavingsAccount::InvalidWithdrawl){
+                cout << "Withdraw not allowed!" << endl;
+            }
+        }    
+   
 	mine.toString();
 	cout<<"Balance after 7 years given 10% interest = "
 		<<mine.Total((float)(0.10),7)<<endl;
@@ -147,20 +156,35 @@ void prblm4(){
 }
 
 void prblm5(){
-    Employee Mark("Mark","Boss",215.50);
-	Mark.setHoursWorked(-3);
+    
+    Employee Mark("Mark", "Boss", 0);
+    try
+    {
+        Mark.setHourlyRate(215.50);
+    }
+    catch (Employee::InvalidHourlyRate){
+        cout << "Unacceptable Hourly Rate" << endl;
+    }
+    try
+    {
+        Mark.setHoursWorked(-3);
 	Mark.toString();
+    }
+    catch (Employee::InvalidHoursWorked){
+        cout << "Unacceptable Hours Worked" << endl;
+    }
+	
 	Mark.CalculatePay(Mark.setHourlyRate(20.0),
 		Mark.setHoursWorked(25));
 	Mark.toString();
-	Mark.CalculatePay(Mark.setHourlyRate(40.0),
+ 	Mark.CalculatePay(Mark.setHourlyRate(40.0),
 		Mark.setHoursWorked(25));
 	Mark.toString();
 	Mark.CalculatePay(Mark.setHourlyRate(60.0),
 		Mark.setHoursWorked(25));
 	Mark.toString();
 
-	Employee Mary("Mary","VP",50.0);
+    Employee Mary("Mary","VP",50.0);
 	Mary.toString();
 	Mary.CalculatePay(Mary.setHourlyRate(50.0),
 		Mary.setHoursWorked(40));

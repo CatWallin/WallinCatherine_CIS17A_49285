@@ -19,6 +19,8 @@ class Employee
 		void   toString();              //Procedure
 		int    setHoursWorked(int);     //Procedure
 		float  setHourlyRate(float);    //Procedure
+                class  InvalidHoursWorked{};
+                class  InvalidHourlyRate{};
 	private:
 		double Tax(float);      //Utility Procedure
 		char   MyName[20];      //Property

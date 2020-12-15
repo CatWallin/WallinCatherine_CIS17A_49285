@@ -8,12 +8,15 @@
       <itemPath>Prob1Random.h</itemPath>
       <itemPath>Prob2Sort.h</itemPath>
       <itemPath>Prob3Table.h</itemPath>
+      <itemPath>Prob3Table.tcc</itemPath>
       <itemPath>Prob3TableInherited.h</itemPath>
+      <itemPath>Prob3TableInherited.tcc</itemPath>
       <itemPath>SavingsAccount.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>Problem3.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -21,8 +24,6 @@
       <itemPath>EmployeeClass.cpp</itemPath>
       <itemPath>Prob1Random.cpp</itemPath>
       <itemPath>Prob2Sort.cpp</itemPath>
-      <itemPath>Prob3Table.cpp</itemPath>
-      <itemPath>Prob3TableInherited.cpp</itemPath>
       <itemPath>SavingsAccount.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -60,13 +61,15 @@
       </item>
       <item path="Prob2Sort.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Prob3Table.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Prob3Table.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Prob3TableInherited.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Prob3Table.tcc" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Prob3TableInherited.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prob3TableInherited.tcc" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Problem3.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SavingsAccount.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -107,13 +110,15 @@
       </item>
       <item path="Prob2Sort.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Prob3Table.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Prob3Table.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Prob3TableInherited.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Prob3Table.tcc" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Prob3TableInherited.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prob3TableInherited.tcc" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Problem3.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SavingsAccount.cpp" ex="false" tool="1" flavor2="0">
       </item>
