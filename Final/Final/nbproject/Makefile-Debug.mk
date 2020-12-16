@@ -37,7 +37,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/EmployeeClass.o \
 	${OBJECTDIR}/Prob1Random.o \
-	${OBJECTDIR}/Prob2Sort.o \
 	${OBJECTDIR}/SavingsAccount.o \
 	${OBJECTDIR}/main.o
 
@@ -75,11 +74,6 @@ ${OBJECTDIR}/Prob1Random.o: Prob1Random.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Prob1Random.o Prob1Random.cpp
-
-${OBJECTDIR}/Prob2Sort.o: Prob2Sort.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Prob2Sort.o Prob2Sort.cpp
 
 ${OBJECTDIR}/SavingsAccount.o: SavingsAccount.cpp
 	${MKDIR} -p ${OBJECTDIR}

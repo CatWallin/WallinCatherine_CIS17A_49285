@@ -17,10 +17,7 @@ using namespace std;
 
 template<class T>
 Prob3TableInherited<T>::Prob3TableInherited(char *input,int r,int c):Prob3Table<T>(input, r, c){     
-//    augTable = new T[r+1];
-//    for (int i = 0; i < r; i++){
-//        augTable[i] = new T[c+1];
-//    } 
+
     int augRows = r + 1;
     int augCols = c + 1;
     

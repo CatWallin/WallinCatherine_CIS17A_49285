@@ -7,6 +7,7 @@
       <itemPath>EmployeeClass.h</itemPath>
       <itemPath>Prob1Random.h</itemPath>
       <itemPath>Prob2Sort.h</itemPath>
+      <itemPath>Prob2Sort.tcc</itemPath>
       <itemPath>Prob3Table.h</itemPath>
       <itemPath>Prob3Table.tcc</itemPath>
       <itemPath>Prob3TableInherited.h</itemPath>
@@ -23,7 +24,6 @@
                    projectFiles="true">
       <itemPath>EmployeeClass.cpp</itemPath>
       <itemPath>Prob1Random.cpp</itemPath>
-      <itemPath>Prob2Sort.cpp</itemPath>
       <itemPath>SavingsAccount.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -57,9 +57,9 @@
       </item>
       <item path="Prob1Random.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Prob2Sort.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Prob2Sort.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prob2Sort.tcc" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Prob3Table.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -106,9 +106,9 @@
       </item>
       <item path="Prob1Random.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Prob2Sort.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Prob2Sort.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prob2Sort.tcc" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Prob3Table.h" ex="false" tool="3" flavor2="0">
       </item>
