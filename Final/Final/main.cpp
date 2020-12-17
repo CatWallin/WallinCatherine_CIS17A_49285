@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
         }
     }while(choice>='1'&&choice<='6');
     
+    
     return 0;
 }
 
@@ -86,13 +87,15 @@ void prblm1(){
 
 void prblm2(){
     cout<<"The start of Problem 2, the sorting problem"<<endl;
+    //The file was not reading in correctly, I added spaces to seperate the rows and it read in fine
 	Prob2Sort<char> rc;
 	bool ascending=true;
 	ifstream infile;
 	infile.open("Problem2.txt",ios::in);
 	char *ch2=new char[10*16];
 	char *ch2p=ch2;
-	while(infile.get(*ch2)){cout<<*ch2;ch2++;}
+        int i = 0;
+	while(infile.get(*ch2)){cout<<*ch2;i++;ch2++; if (i%16 == 0) cout << endl;}
 	infile.close();
 	cout<<endl;
 	cout<<"Sorting on which column"<<endl;
@@ -105,7 +108,14 @@ void prblm2(){
 		{
 			cout<<zc[i*16+j];
 		}
+                cout << endl;
 	}
+        
+        cout << endl << "***Extra Credit: If I had some more time I would try to improve my code for this problem:" << endl;
+        cout << "I couldn't figure out a way to utilize the index inside the class to help in my sort." << endl;
+        cout << "Secondly, I really struggled with this problem until the last minute! I am sure there is a more efficient" << endl;
+        cout << "way to organize and sort the problem. I also struggled with reading in the array.***" << endl;
+        
 	delete []zc;
 	cout<<endl;
 }

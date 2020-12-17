@@ -34,18 +34,16 @@ float SavingsAccount::Total(float savint,int time){             //Savings Proced
 }            
      
 float SavingsAccount::TotalRecursive(float savint,int time){
-    //time--;
-    //float equation = 1;
-    //equation *= (1 + savint);
-    if (time == 0){
+    //base case (if period is less than 0, no interest
+    if (time <= 0){
         return savint;
     }
-    else {
-        return TotalRecursive(savint, time-1)*(1 + time);
-    }
+        return (TotalRecursive(Balance*(1+time), time-1));
+    
 }
 
-void  SavingsAccount::toString(){                               //Output Properties
+void  SavingsAccount::toString(){  
+    
     cout << setprecision(2) << fixed << "Balance: $" << Balance << endl;
     cout << "WithDraws: " << FreqWithDraw << endl;
     cout << "Deposit: " << FreqDeposit << endl;
